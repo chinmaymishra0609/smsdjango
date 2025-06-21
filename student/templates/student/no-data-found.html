@@ -1,0 +1,20 @@
+{% load static %}
+<div class="maintenance-block">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card error-card">
+                    <div class="card-body">
+                        <div class="error-image-block d-flex justify-content-center align-items-center">
+                            <img class="img-fluid" src="{% static 'core/assets/images/pages/no_data_found.jpg' %}" alt="no_data_found.jpg">
+                        </div>
+                        <div class="text-center">
+                            <h1 class=""><b>No Data Found</b></h1>
+                            <a type="button" class="btn btn-outline-primary mb-3" href="{% url 'add-student' %}">Go to home</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

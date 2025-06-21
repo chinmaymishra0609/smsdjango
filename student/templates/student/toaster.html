@@ -1,0 +1,17 @@
+{% load static %}
+
+{% if messages %}
+    {% for message in messages %}
+    <div class="position-fixed top-0 end-0 p-3" style="z-index: 99999">
+        <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="{% static 'core/assets/images/student-small-logo.jpg' %}" class="img-fluid m-r-5" alt="images" style="width: 17px">
+                <strong class="me-auto">Student</strong>
+                <small></small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body fw-bold text-{% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</div>
+        </div>
+    </div>
+    {% endfor %}
+{% endif %}

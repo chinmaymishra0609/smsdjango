@@ -1,0 +1,374 @@
+from django import forms
+from .models import Student
+
+# Create Student form here.
+class StudentForm(forms.ModelForm):
+    class Meta:
+        model = Student
+        fields = [
+            "student_first_name",
+            "student_middle_name",
+            "student_last_name",
+            "student_father_first_name",
+            "student_father_middle_name",
+            "student_father_last_name",
+            "student_mother_first_name",
+            "student_mother_middle_name",
+            "student_mother_last_name",
+            "student_email",
+            "student_phone_number",
+            "student_birth_date",
+            "student_gender",
+            "student_id",
+            "student_entry_year",
+            "student_semester",
+            "student_address_line_1",
+            "student_address_line_2",
+            "student_city",
+            "student_state",
+            "student_zip",
+            "student_image",
+
+            "guardian_address_line_1",
+            "guardian_address_line_2",
+            "guardian_city",
+            "guardian_state",
+            "guardian_zip",
+
+            "first_emergency_first_name",
+            "first_emergency_middle_name",
+            "first_emergency_last_name",
+            "first_emergency_phone_number",
+            "first_emergency_relationship",            
+            "second_emergency_first_name",
+            "second_emergency_middle_name",
+            "second_emergency_last_name",
+            "second_emergency_phone_number",
+            "second_emergency_relationship",
+
+            "physician_first_name",
+            "physician_middle_name",
+            "physician_last_name",
+            "physician_primary_phone_number",
+            "physician_secondary_phone_number",
+            "preferred_hospital_name",
+            "physician_special_notes",
+
+            "previous_school_name",
+            "previous_school_city",
+            "previous_school_state",
+            "previous_school_date_started",
+            "previous_school_date_ended",
+            "previous_school_notes",
+        ]
+
+        labels = {
+            "student_first_name": "First Name",
+            "student_middle_name": "Middle Name",
+            "student_last_name": "Last Name",
+            "student_father_first_name": "Father First Name",
+            "student_father_middle_name": "Father Middle Name",
+            "student_father_last_name": "Father Last Name",
+            "student_mother_first_name": "Mother First Name",
+            "student_mother_middle_name": "Mother Middle Name",
+            "student_mother_last_name": "Mother Last Name",
+            "student_email": "Email",
+            "student_phone_number": "Phone Number",
+            "student_birth_date": "Birth Date",
+            "student_gender": "Gender",
+            "student_id": "Student ID",
+            "student_entry_year": "Entry Year",
+            "student_semester": "Semester",
+            "student_address_line_1": "Address Line 1",
+            "student_address_line_2": "Address Line 2",
+            "student_city": "City",
+            "student_state": "State",
+            "student_zip": "ZIP",
+            "student_image": "Image",
+
+            "guardian_address_line_1": "Address Line 1",
+            "guardian_address_line_2": "Address Line 2",
+            "guardian_city": "City",
+            "guardian_state": "State",
+            "guardian_zip": "ZIP Code",     
+
+            "first_emergency_first_name": "First Name",
+            "first_emergency_middle_name": "Middle Name",
+            "first_emergency_last_name": "Last Name",
+            "first_emergency_phone_number": "Phone Number",
+            "first_emergency_relationship": "Relationship",            
+            "second_emergency_first_name": "First Name",
+            "second_emergency_middle_name": "Middle Name",
+            "second_emergency_last_name": "Last Name",
+            "second_emergency_phone_number": "Phone Number",
+            "second_emergency_relationship": "Relationship",
+
+            "physician_first_name": "First Name",
+            "physician_middle_name": "Middle Name",
+            "physician_last_name": "Last Name",
+            "physician_primary_phone_number": "Primary Phone",
+            "physician_secondary_phone_number": "Secondary Phone",
+            "preferred_hospital_name": "Preferred Hospital",
+            "physician_special_notes": "Special Notes",
+
+            "previous_school_name": "School Name",
+            "previous_school_city": "School City",
+            "previous_school_state": "School State",
+            "previous_school_date_started": "School Start Date",
+            "previous_school_date_ended": "School End Date",
+            "previous_school_notes": "Notes About School",
+        }
+
+        widgets = {
+            "student_first_name": forms.TextInput(attrs={"class": "form-control"}),
+            "student_middle_name": forms.TextInput(attrs={"class": "form-control"}),
+            "student_last_name": forms.TextInput(attrs={"class": "form-control"}),
+            "student_father_first_name": forms.TextInput(attrs={"class": "form-control"}),
+            "student_father_middle_name": forms.TextInput(attrs={"class": "form-control"}),
+            "student_father_last_name": forms.TextInput(attrs={"class": "form-control"}),
+            "student_mother_first_name": forms.TextInput(attrs={"class": "form-control"}),
+            "student_mother_middle_name": forms.TextInput(attrs={"class": "form-control"}),
+            "student_mother_last_name": forms.TextInput(attrs={"class": "form-control"}),
+            "student_email": forms.EmailInput(attrs={"class": "form-control"}),
+            "student_phone_number": forms.TextInput(attrs={"class": "form-control"}),
+            "student_birth_date": forms.DateInput(attrs={"class": "form-control", "type": "date"}),
+            "student_gender": forms.Select(attrs={"class": "form-select"}),
+            "student_id": forms.TextInput(attrs={"class": "form-control"}),
+            "student_entry_year": forms.TextInput(attrs={"class": "form-control"}),
+            "student_semester": forms.Select(attrs={"class": "form-select"}),
+            "student_address_line_1": forms.TextInput(attrs={"class": "form-control"}),
+            "student_address_line_2": forms.TextInput(attrs={"class": "form-control"}),
+            "student_city": forms.TextInput(attrs={"class": "form-control"}),
+            "student_state": forms.TextInput(attrs={"class": "form-control"}),
+            "student_zip": forms.TextInput(attrs={"class": "form-control"}),
+            "student_image": forms.ClearableFileInput(attrs={"class": "form-control"}),
+
+            "guardian_address_line_1": forms.TextInput(attrs={"class": "form-control"}),
+            "guardian_address_line_2": forms.TextInput(attrs={"class": "form-control"}),
+            "guardian_city": forms.TextInput(attrs={"class": "form-control"}),
+            "guardian_state": forms.TextInput(attrs={"class": "form-control"}),
+            "guardian_zip": forms.TextInput(attrs={"class": "form-control"}),
+
+            "first_emergency_first_name": forms.TextInput(attrs={"class": "form-control"}),
+            "first_emergency_middle_name": forms.TextInput(attrs={"class": "form-control"}),
+            "first_emergency_last_name": forms.TextInput(attrs={"class": "form-control"}),
+            "first_emergency_phone_number": forms.TextInput(attrs={"class": "form-control"}),
+            "first_emergency_relationship": forms.TextInput(attrs={"class": "form-control"}),
+            "second_emergency_first_name": forms.TextInput(attrs={"class": "form-control"}),
+            "second_emergency_middle_name": forms.TextInput(attrs={"class": "form-control"}),
+            "second_emergency_last_name": forms.TextInput(attrs={"class": "form-control"}),
+            "second_emergency_phone_number": forms.TextInput(attrs={"class": "form-control"}),
+            "second_emergency_relationship": forms.TextInput(attrs={"class": "form-control"}),
+
+            "physician_first_name": forms.TextInput(attrs={"class": "form-control"}),
+            "physician_middle_name": forms.TextInput(attrs={"class": "form-control"}),
+            "physician_last_name": forms.TextInput(attrs={"class": "form-control"}),
+            "physician_primary_phone_number": forms.TextInput(attrs={"class": "form-control"}),
+            "physician_secondary_phone_number": forms.TextInput(attrs={"class": "form-control"}),
+            "preferred_hospital_name": forms.TextInput(attrs={"class": "form-control"}),
+            "physician_special_notes": forms.Textarea(attrs={"class": "form-control", "rows": 3}),
+
+            "previous_school_name": forms.TextInput(attrs={"class": "form-control"}),
+            "previous_school_city": forms.TextInput(attrs={"class": "form-control"}),
+            "previous_school_state": forms.TextInput(attrs={"class": "form-control"}),
+            "previous_school_date_started": forms.DateInput(attrs={"class": "form-control", "type": "date"}),
+            "previous_school_date_ended": forms.DateInput(attrs={"class": "form-control", "type": "date"}),
+            "previous_school_notes": forms.Textarea(attrs={"class": "form-control", "rows": 3}),
+        }
+
+# Create Student Information forms here.
+class StudentInformationForm(forms.ModelForm):
+    class Meta:
+        model = Student
+        fields = [
+            "student_first_name",
+            "student_middle_name",
+            "student_last_name",
+            "student_email",
+            "student_phone_number",
+            "student_birth_date",
+            "student_gender",
+            "student_id",
+            "student_entry_year",
+            "student_semester",
+            "student_address_line_1",
+            "student_address_line_2",
+            "student_city",
+            "student_state",
+            "student_zip",
+            "student_image",
+        ]
+
+        labels = {
+            "student_first_name": "First Name",
+            "student_middle_name": "Middle Name",
+            "student_last_name": "Last Name",
+            "student_email": "Email",
+            "student_phone_number": "Phone Number",
+            "student_birth_date": "Birth Date",
+            "student_gender": "Gender",
+            "student_id": "Student ID",
+            "student_entry_year": "Entry Year",
+            "student_semester": "Semester",
+            "student_address_line_1": "Address Line 1",
+            "student_address_line_2": "Address Line 2",
+            "student_city": "City",
+            "student_state": "State",
+            "student_zip": "ZIP",
+            "student_image": "Image",
+        }
+
+        widgets = {
+            "student_first_name": forms.TextInput(attrs={"class": "form-control"}),
+            "student_middle_name": forms.TextInput(attrs={"class": "form-control"}),
+            "student_last_name": forms.TextInput(attrs={"class": "form-control"}),
+            "student_email": forms.EmailInput(attrs={"class": "form-control"}),
+            "student_phone_number": forms.TextInput(attrs={"class": "form-control"}),
+            "student_birth_date": forms.DateInput(attrs={"class": "form-control", "type": "date"}),
+            "student_gender": forms.Select(attrs={"class": "form-select"}),
+            "student_id": forms.TextInput(attrs={"class": "form-control"}),
+            "student_entry_year": forms.TextInput(attrs={"class": "form-control"}),
+            "student_semester": forms.Select(attrs={"class": "form-select"}),
+            "student_address_line_1": forms.TextInput(attrs={"class": "form-control"}),
+            "student_address_line_2": forms.TextInput(attrs={"class": "form-control"}),
+            "student_city": forms.TextInput(attrs={"class": "form-control"}),
+            "student_state": forms.TextInput(attrs={"class": "form-control"}),
+            "student_zip": forms.TextInput(attrs={"class": "form-control"}),
+            "student_image": forms.ClearableFileInput(attrs={"class": "form-control"}),
+        }
+
+# Create Guardian Information forms here.
+class GuardianInformationForm(forms.ModelForm):
+    class Meta:
+        model = Student
+        fields = [
+            "guardian_address_line_1",
+            "guardian_address_line_2",
+            "guardian_city",
+            "guardian_state",
+            "guardian_zip",
+        ]
+        
+        labels = {
+            "guardian_address_line_1": "Guardian Address Line 1",
+            "guardian_address_line_2": "Guardian Address Line 2",
+            "guardian_city": "Guardian City",
+            "guardian_state": "Guardian State",
+            "guardian_zip": "Guardian ZIP Code",
+        }
+        
+        widgets = {
+            "guardian_address_line_1": forms.TextInput(attrs={"class": "form-control"}),
+            "guardian_address_line_2": forms.TextInput(attrs={"class": "form-control"}),
+            "guardian_city": forms.TextInput(attrs={"class": "form-control"}),
+            "guardian_state": forms.TextInput(attrs={"class": "form-control"}),
+            "guardian_zip": forms.TextInput(attrs={"class": "form-control"}),
+        }
+
+# Create Emergency Information forms here.
+class EmergencyInformationForm(forms.ModelForm):
+    class Meta:
+        model = Student
+        fields = [
+            "first_emergency_first_name",
+            "first_emergency_middle_name",
+            "first_emergency_last_name",
+            "first_emergency_phone_number",
+            "first_emergency_relationship",            
+            "second_emergency_first_name",
+            "second_emergency_middle_name",
+            "second_emergency_last_name",
+            "second_emergency_phone_number",
+            "second_emergency_relationship",
+        ]
+        
+        labels = {            
+            "first_emergency_first_name": "First Emergency Contact - First Name",
+            "first_emergency_middle_name": "First Emergency Contact - Middle Name",
+            "first_emergency_last_name": "First Emergency Contact - Last Name",
+            "first_emergency_phone_number": "First Emergency Contact - Phone Number",
+            "first_emergency_relationship": "First Emergency Contact - Relationship",            
+            "second_emergency_first_name": "Second Emergency Contact - First Name",
+            "second_emergency_middle_name": "Second Emergency Contact - Middle Name",
+            "second_emergency_last_name": "Second Emergency Contact - Last Name",
+            "second_emergency_phone_number": "Second Emergency Contact - Phone Number",
+            "second_emergency_relationship": "Second Emergency Contact - Relationship",
+        }
+        
+        widgets = {
+            "first_emergency_first_name": forms.TextInput(attrs={"class": "form-control"}),
+            "first_emergency_middle_name": forms.TextInput(attrs={"class": "form-control"}),
+            "first_emergency_last_name": forms.TextInput(attrs={"class": "form-control"}),
+            "first_emergency_phone_number": forms.TextInput(attrs={"class": "form-control"}),
+            "first_emergency_relationship": forms.TextInput(attrs={"class": "form-control"}),
+            "second_emergency_first_name": forms.TextInput(attrs={"class": "form-control"}),
+            "second_emergency_middle_name": forms.TextInput(attrs={"class": "form-control"}),
+            "second_emergency_last_name": forms.TextInput(attrs={"class": "form-control"}),
+            "second_emergency_phone_number": forms.TextInput(attrs={"class": "form-control"}),
+            "second_emergency_relationship": forms.TextInput(attrs={"class": "form-control"}),
+        }
+
+# Create Physician Information forms here.
+class PhysicianInformationForm(forms.ModelForm):
+    class Meta:
+        model = Student
+        fields = [
+            "physician_first_name",
+            "physician_middle_name",
+            "physician_last_name",
+            "physician_primary_phone_number",
+            "physician_secondary_phone_number",
+            "preferred_hospital_name",
+            "physician_special_notes",
+        ]
+        
+        labels = {
+            "physician_first_name": "Physician First Name",
+            "physician_middle_name": "Physician Middle Name",
+            "physician_last_name": "Physician Last Name",
+            "physician_primary_phone_number": "Physician Primary Phone",
+            "physician_secondary_phone_number": "Physician Secondary Phone",
+            "preferred_hospital_name": "Preferred Hospital",
+            "physician_special_notes": "Special Notes",
+        }
+        
+        widgets = {
+            "physician_first_name": forms.TextInput(attrs={"class": "form-control"}),
+            "physician_middle_name": forms.TextInput(attrs={"class": "form-control"}),
+            "physician_last_name": forms.TextInput(attrs={"class": "form-control"}),
+            "physician_primary_phone_number": forms.TextInput(attrs={"class": "form-control"}),
+            "physician_secondary_phone_number": forms.TextInput(attrs={"class": "form-control"}),
+            "preferred_hospital_name": forms.TextInput(attrs={"class": "form-control"}),
+            "physician_special_notes": forms.Textarea(attrs={"class": "form-control", "rows": 3}),
+        }
+
+# Create School Information forms here.
+class SchoolInformationForm(forms.ModelForm):
+    class Meta:
+        model = Student
+        fields = [
+            "previous_school_name",
+            "previous_school_city",
+            "previous_school_state",
+            "previous_school_date_started",
+            "previous_school_date_ended",
+            "previous_school_notes",
+        ]
+        
+        labels = {
+            "previous_school_name": "Previous School Name",
+            "previous_school_city": "Previous School City",
+            "previous_school_state": "Previous School State",
+            "previous_school_date_started": "Previous School Start Date",
+            "previous_school_date_ended": "Previous School End Date",
+            "previous_school_notes": "Notes About Previous School",
+        }
+        
+        widgets = {
+            "previous_school_name": forms.TextInput(attrs={"class": "form-control"}),
+            "previous_school_city": forms.TextInput(attrs={"class": "form-control"}),
+            "previous_school_state": forms.TextInput(attrs={"class": "form-control"}),
+            "previous_school_date_started": forms.DateInput(attrs={"class": "form-control", "type": "date"}),
+            "previous_school_date_ended": forms.DateInput(attrs={"class": "form-control", "type": "date"}),
+            "previous_school_notes": forms.Textarea(attrs={"class": "form-control", "rows": 3}),
+        }

@@ -1,0 +1,338 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
+{% block breadcrumb %}
+    {% include "student/breadcrumb.html" with breadcrumb=title %}
+{% endblock breadcrumb %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body position-relative">
+                                    <div class="text-center mt-3">
+                                        <div class="chat-avtar d-inline-flex mx-auto">
+                                            <img class="rounded-circle img-fluid wid-60" src="{{ student.student_image.url }}" alt="{{ student.student_image.url }}">
+                                        </div>
+                                        <h5 class="mb-0">{{ student.student_first_name | lower | capfirst }} {{ student.student_middle_name | default_if_none:"" | lower | capfirst }} {{ student.student_last_name | default_if_none:"" | lower | capfirst }}</h5>
+                                        <p class="text-muted text-sm">{{ student.student_semester | lower | capfirst }} Semster</p>
+                                        <hr class="my-3">
+                                        <div class="row g-3">
+                                            <div class="col-4">
+                                                <h5 class="mb-0">{{ student.student_birth_date | date:"d/m/y" }}</h5>
+                                                <small class="text-muted">Birth Date</small>
+                                            </div>
+                                            <div class="col-4 border border-top-0 border-bottom-0">
+                                                <h5 class="mb-0">{{ student.student_gender | lower | capfirst }}</h5>
+                                                <small class="text-muted">Gender</small>
+                                            </div>
+                                            <div class="col-4">
+                                                <h5 class="mb-0">{{ student.student_entry_year }}</h5>
+                                                <small class="text-muted">Entry Year</small>
+                                            </div>
+                                        </div>
+                                        <hr class="my-3">
+                                        <div class="d-inline-flex align-items-center justify-content-between w-100 mb-3">
+                                            <i class="ti ti-mail"></i>
+                                            <p class="mb-0">{{ student.student_email | lower }}</p>
+                                        </div>
+                                        <div class="d-inline-flex align-items-center justify-content-between w-100 mb-3">
+                                            <i class="ti ti-phone"></i>
+                                            <p class="mb-0">{{ student.student_phone_number }}</p>
+                                        </div>
+                                        <div class="d-inline-flex align-items-center justify-content-between w-100 mb-3">
+                                            <i class="ti ti-id"></i>
+                                            <p class="mb-0">{{ student.student_id }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <a href="{% url 'add-student' %}" class="btn btn-outline-primary">Add</a>
+                                    <a href="{% url 'update-student' student.id %}" class="btn btn-outline-warning">Update</a>
+                                    <a href="{% url 'delete-student' student.id %}" class="btn btn-outline-danger">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>Personal Details</h5>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item px-0 pt-0">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p class="mb-1 text-muted">Father Name</p>
+                                                    <h6 class="mb-0">{{ student.student_father_first_name | lower | capfirst }} {{ student.student_father_middle_name | default_if_none:"" | lower | capfirst }} {{ student.student_father_last_name | default_if_none:"" | lower | capfirst }}</h6>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p class="mb-1 text-muted">Mother Name</p>
+                                                    <h6 class="mb-0">{{ student.student_mother_first_name | lower | capfirst }} {{ student.student_mother_middle_name | default_if_none:"" | lower | capfirst }} {{ student.student_mother_last_name | default_if_none:"" | lower | capfirst }}</h6>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item px-0">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p class="mb-1 text-muted">City</p>
+                                                    <h6 class="mb-0">{{ student.student_city | lower | capfirst }}</h6>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p class="mb-1 text-muted">State</p>
+                                                    <h6 class="mb-0">{{ student.student_state | lower | capfirst }}</h6>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item px-0">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p class="mb-1 text-muted">Country</p>
+                                                    <h6 class="mb-0">India</h6>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p class="mb-1 text-muted">Zip Code</p>
+                                                    <h6 class="mb-0">{{ student.student_zip }}</h6>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item px-0">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p class="mb-1 text-muted">Address</p>
+                                                    <h6 class="mb-0">
+                                                        {{ student.student_address_line_1 | lower | capfirst }}
+                                                        {{ student.student_address_line_2 | lower }}
+                                                    </h6>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>Guardian Details</h5>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item px-0">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p class="mb-1 text-muted">City</p>
+                                                    <h6 class="mb-0">{{ student.guardian_city | lower | capfirst }}</h6>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p class="mb-1 text-muted">State</p>
+                                                    <h6 class="mb-0">{{ student.guardian_state | lower | capfirst }}</h6>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item px-0">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p class="mb-1 text-muted">Country</p>
+                                                    <h6 class="mb-0">India</h6>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p class="mb-1 text-muted">Zip Code</p>
+                                                    <h6 class="mb-0">{{ student.guardian_zip }}</h6>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item px-0">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p class="mb-1 text-muted">Address</p>
+                                                    <h6 class="mb-0">
+                                                        {{ student.guardian_address_line_1 | lower | capfirst }}
+                                                        {{ student.guardian_address_line_2 | lower }}
+                                                    </h6>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>Emergency Details</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h5>First Emergency Details</h5>
+                                                </div>
+                                                <div class="card-body">
+                                                    <ul class="list-group list-group-flush">
+                                                        <li class="list-group-item px-0 pt-0">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <p class="mb-1 text-muted">Name</p>
+                                                                    <h6 class="mb-0">{{ student.first_emergency_first_name | lower | capfirst }} {{ student.first_emergency_middle_name | default_if_none:"" | lower | capfirst }} {{ student.first_emergency_last_name | default_if_none:"" | lower | capfirst }}</h6>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="list-group-item px-0">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <p class="mb-1 text-muted">Phone</p>
+                                                                    <h6 class="mb-0">{{ student.first_emergency_phone_number }}</h6>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="list-group-item px-0">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <p class="mb-1 text-muted">Relationship</p>
+                                                                    <h6 class="mb-0">{{ student.first_emergency_relationship | lower | capfirst }}</h6>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>                                            
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h5>Second Emergency Details</h5>
+                                                </div>
+                                                <div class="card-body">
+                                                    <ul class="list-group list-group-flush">
+                                                        <li class="list-group-item px-0 pt-0">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <p class="mb-1 text-muted">Name</p>
+                                                                    <h6 class="mb-0">{{ student.second_emergency_first_name | lower | capfirst }} {{ student.second_emergency_middle_name | default_if_none:"" | lower | capfirst }} {{ student.second_emergency_last_name | default_if_none:"" | lower | capfirst }}</h6>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="list-group-item px-0">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <p class="mb-1 text-muted">Phone</p>
+                                                                    <h6 class="mb-0">{{ student.second_emergency_phone_number }}</h6>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="list-group-item px-0">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <p class="mb-1 text-muted">Relationship</p>
+                                                                    <h6 class="mb-0">{{ student.second_emergency_relationship | lower | capfirst }}</h6>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>Medical Details</h5>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item px-0 pt-0">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p class="mb-1 text-muted">Name</p>
+                                                    <h6 class="mb-0">{{ student.physician_first_name | lower | capfirst }} {{ student.physician_middle_name | default_if_none:"" | lower | capfirst }} {{ student.physician_last_name | default_if_none:"" | lower | capfirst }}</h6>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p class="mb-1 text-muted">Hospital Name</p>
+                                                    <h6 class="mb-0">{{ student.preferred_hospital_name | lower | capfirst }}</h6>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item px-0">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p class="mb-1 text-muted">Primary Phone</p>
+                                                    <h6 class="mb-0">{{ student.physician_primary_phone_number }}</h6>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p class="mb-1 text-muted">Secondary Phone</p>
+                                                    <h6 class="mb-0">{{ student.physician_secondary_phone_number }}</h6>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item px-0">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p class="mb-1 text-muted">Special Notes</p>
+                                                    <h6 class="mb-0">{{ student.physician_special_notes | lower | capfirst }}</h6>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>Previous School Details</h5>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item px-0 pt-0">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p class="mb-1 text-muted">School Name</p>
+                                                    <h6 class="mb-0">{{ student.previous_school_name | lower | capfirst }}</h6>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p class="mb-1 text-muted">Start Date</p>
+                                                    <h6 class="mb-0">{{ student.previous_school_date_started | date:"d/M/Y" }}</h6>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item px-0">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p class="mb-1 text-muted">End Date</p>
+                                                    <h6 class="mb-0">{{ student.previous_school_date_ended | date:"d/M/Y" }}</h6>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p class="mb-1 text-muted">City</p>
+                                                    <h6 class="mb-0">{{ student.previous_school_city | lower | capfirst }}</h6>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item px-0">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p class="mb-1 text-muted">State</p>
+                                                    <h6 class="mb-0">{{ student.previous_school_state | lower | capfirst }}</h6>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p class="mb-1 text-muted">Special Notes</p>
+                                                    <h6 class="mb-0">{{ student.previous_school_notes | lower | capfirst }}</h6>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
