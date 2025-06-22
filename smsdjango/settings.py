@@ -5,7 +5,6 @@ from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
@@ -26,7 +25,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'formtools',
     'core',
     'student',
 ]
@@ -41,7 +39,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'django_crud.urls'
+ROOT_URLCONF = 'smsdjango.urls'
 
 TEMPLATES = [
     {
@@ -59,7 +57,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'django_crud.wsgi.application'
+WSGI_APPLICATION = 'smsdjango.wsgi.application'
 
 
 # Database

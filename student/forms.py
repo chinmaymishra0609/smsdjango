@@ -26,6 +26,7 @@ class StudentForm(forms.ModelForm):
             "student_address_line_2",
             "student_city",
             "student_state",
+            "student_country",
             "student_zip",
             "student_image",
 
@@ -33,6 +34,7 @@ class StudentForm(forms.ModelForm):
             "guardian_address_line_2",
             "guardian_city",
             "guardian_state",
+            "guardian_country",
             "guardian_zip",
 
             "first_emergency_first_name",
@@ -57,6 +59,7 @@ class StudentForm(forms.ModelForm):
             "previous_school_name",
             "previous_school_city",
             "previous_school_state",
+            "previous_school_country",
             "previous_school_date_started",
             "previous_school_date_ended",
             "previous_school_notes",
@@ -83,6 +86,7 @@ class StudentForm(forms.ModelForm):
             "student_address_line_2": "Address Line 2",
             "student_city": "City",
             "student_state": "State",
+            "student_country": "Country",
             "student_zip": "ZIP",
             "student_image": "Image",
 
@@ -90,6 +94,7 @@ class StudentForm(forms.ModelForm):
             "guardian_address_line_2": "Address Line 2",
             "guardian_city": "City",
             "guardian_state": "State",
+            "guardian_country": "Country",
             "guardian_zip": "ZIP Code",     
 
             "first_emergency_first_name": "First Name",
@@ -111,12 +116,13 @@ class StudentForm(forms.ModelForm):
             "preferred_hospital_name": "Preferred Hospital",
             "physician_special_notes": "Special Notes",
 
-            "previous_school_name": "School Name",
-            "previous_school_city": "School City",
-            "previous_school_state": "School State",
-            "previous_school_date_started": "School Start Date",
-            "previous_school_date_ended": "School End Date",
-            "previous_school_notes": "Notes About School",
+            "previous_school_name": "Name",
+            "previous_school_city": "City",
+            "previous_school_state": "State",
+            "previous_school_country": "Country",
+            "previous_school_date_started": "Start Date",
+            "previous_school_date_ended": "End Date",
+            "previous_school_notes": "Special Notes",
         }
 
         widgets = {
@@ -139,6 +145,7 @@ class StudentForm(forms.ModelForm):
             "student_address_line_1": forms.TextInput(attrs={"class": "form-control"}),
             "student_address_line_2": forms.TextInput(attrs={"class": "form-control"}),
             "student_city": forms.TextInput(attrs={"class": "form-control"}),
+            "student_country": forms.TextInput(attrs={"class": "form-control"}),
             "student_state": forms.TextInput(attrs={"class": "form-control"}),
             "student_zip": forms.TextInput(attrs={"class": "form-control"}),
             "student_image": forms.ClearableFileInput(attrs={"class": "form-control"}),
@@ -147,6 +154,7 @@ class StudentForm(forms.ModelForm):
             "guardian_address_line_2": forms.TextInput(attrs={"class": "form-control"}),
             "guardian_city": forms.TextInput(attrs={"class": "form-control"}),
             "guardian_state": forms.TextInput(attrs={"class": "form-control"}),
+            "guardian_country": forms.TextInput(attrs={"class": "form-control"}),
             "guardian_zip": forms.TextInput(attrs={"class": "form-control"}),
 
             "first_emergency_first_name": forms.TextInput(attrs={"class": "form-control"}),
@@ -171,6 +179,7 @@ class StudentForm(forms.ModelForm):
             "previous_school_name": forms.TextInput(attrs={"class": "form-control"}),
             "previous_school_city": forms.TextInput(attrs={"class": "form-control"}),
             "previous_school_state": forms.TextInput(attrs={"class": "form-control"}),
+            "previous_school_country": forms.TextInput(attrs={"class": "form-control"}),
             "previous_school_date_started": forms.DateInput(attrs={"class": "form-control", "type": "date"}),
             "previous_school_date_ended": forms.DateInput(attrs={"class": "form-control", "type": "date"}),
             "previous_school_notes": forms.Textarea(attrs={"class": "form-control", "rows": 3}),

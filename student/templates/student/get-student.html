@@ -98,7 +98,7 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <p class="mb-1 text-muted">Country</p>
-                                                    <h6 class="mb-0">India</h6>
+                                                    <h6 class="mb-0">{{ student.student_country | lower | capfirst }}</h6>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <p class="mb-1 text-muted">Zip Code</p>
@@ -142,7 +142,7 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <p class="mb-1 text-muted">Country</p>
-                                                    <h6 class="mb-0">India</h6>
+                                                    <h6 class="mb-0">{{ student.guardian_country | lower | capfirst }}</h6>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <p class="mb-1 text-muted">Zip Code</p>
@@ -321,6 +321,14 @@
                                                     <h6 class="mb-0">{{ student.previous_school_state | lower | capfirst }}</h6>
                                                 </div>
                                                 <div class="col-md-6">
+                                                    <p class="mb-1 text-muted">Country</p>
+                                                    <h6 class="mb-0">{{ student.previous_school_country | lower | capfirst }}</h6>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item px-0">
+                                            <div class="row">
+                                                <div class="col-md-12">
                                                     <p class="mb-1 text-muted">Special Notes</p>
                                                     <h6 class="mb-0">{{ student.previous_school_notes | lower | capfirst }}</h6>
                                                 </div>

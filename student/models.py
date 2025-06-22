@@ -46,6 +46,7 @@ class Student(models.Model):
     student_address_line_2 = models.CharField(max_length=100, null=True, blank=True)
     student_city = models.CharField(max_length=100, null=True)
     student_state = models.CharField(max_length=100, null=True)
+    student_country = models.CharField(max_length=100, null=True)
     student_zip = models.CharField(max_length=100, null=True)
     student_image = models.ImageField(upload_to=student_image_upload_path, null=True)
     
@@ -53,6 +54,7 @@ class Student(models.Model):
     guardian_address_line_2 = models.CharField(max_length=100, null=True, blank=True)
     guardian_city = models.CharField(max_length=100, null=True)
     guardian_state = models.CharField(max_length=100, null=True)
+    guardian_country = models.CharField(max_length=100, null=True)
     guardian_zip = models.CharField(max_length=100, null=True)
     
     first_emergency_first_name = models.CharField(max_length=100, null=True)
@@ -78,6 +80,7 @@ class Student(models.Model):
     previous_school_name = models.CharField(max_length=100, null=True, blank=True)
     previous_school_city = models.CharField(max_length=100, null=True, blank=True)
     previous_school_state = models.CharField(max_length=100, null=True, blank=True)
+    previous_school_country = models.CharField(max_length=100, null=True, blank=True)
     previous_school_date_started = models.DateField(null=True, blank=True)
     previous_school_date_ended = models.DateField(null=True, blank=True)
     previous_school_notes = models.TextField(null=True, blank=True)

@@ -212,6 +212,15 @@
                             </div>
                             <div class="col-6">
                                 <div class="form-group mb-3">
+                                    {{ form.student_country.label_tag }}
+                                    {{ form.student_country }}
+                                    <div class="text-danger small">
+                                        {{ form.student_country.errors | striptags }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group mb-3">
                                     {{ form.student_image.label_tag }}
                                     {{ form.student_image }}
                                     <div class="text-danger small">
@@ -257,6 +266,15 @@
                                     {{ form.guardian_state }}
                                     <div class="text-danger small">
                                         {{ form.guardian_state.errors | striptags }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group mb-3">
+                                    {{ form.guardian_country.label_tag }}
+                                    {{ form.guardian_country }}
+                                    <div class="text-danger small">
+                                        {{ form.guardian_country.errors | striptags }}
                                     </div>
                                 </div>
                             </div>
@@ -476,6 +494,15 @@
                             </div>
                             <div class="col-6">
                                 <div class="form-group mb-3">
+                                    {{ form.previous_school_country.label_tag }}
+                                    {{ form.previous_school_country }}
+                                    <div class="text-danger small">
+                                        {{ form.previous_school_country.errors | striptags }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group mb-3">
                                     {{ form.previous_school_date_started.label_tag }}
                                     {{ form.previous_school_date_started }}
                                     <div class="text-danger small">
@@ -492,7 +519,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-6">
+                            <div class="col-12">
                                 <div class="form-group mb-3">
                                     {{ form.previous_school_notes.label_tag }}
                                     {{ form.previous_school_notes }}
