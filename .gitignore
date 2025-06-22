@@ -64,7 +64,6 @@ nosetests.xml
 
 # Static and media files
 staticfiles/
-static/
 media/
 mediafiles/
 
