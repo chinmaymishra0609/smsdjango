@@ -14,11 +14,11 @@ class StudentCreateView(View):
 
     def get(self, request):
         self.context["title"] = "Add Student"
-        self.context["form"] = StudentForm()
+        self.context["form"] = StudentForm(label_suffix="")
         return render(request, "student/add-update-student.html", self.context)
 
     def post(self, request, *args, **kwargs):
-        self.context["form"] = StudentForm(request.POST, request.FILES)
+        self.context["form"] = StudentForm(request.POST, request.FILES, label_suffix="")
 
         if self.context["form"].is_valid():
             student = self.context["form"].save()
@@ -40,7 +40,8 @@ class StudentUpdateView(View):
         try:
             student = Student.objects.get(pk=kwargs["pk"])
             self.context["title"] = "Update Student"
-            self.context["form"] = StudentForm(instance=student)
+            self.context["student"] = student
+            self.context["form"] = StudentForm(instance=student, label_suffix="")
             return render(request, "student/add-update-student.html", self.context)
         except Student.DoesNotExist:
             messages.error(request, "The record does not exist or has already been deleted.")
@@ -48,7 +49,7 @@ class StudentUpdateView(View):
 
     def post(self, request, *args, **kwargs):
         student = Student.objects.get(pk=kwargs["pk"])
-        self.context["form"] = StudentForm(request.POST, request.FILES, instance=student)
+        self.context["form"] = StudentForm(request.POST, request.FILES, instance=student, label_suffix="")
 
         if self.context["form"].is_valid():
             student = self.context["form"].save()
@@ -130,11 +131,3 @@ class StudentDeleteView(View):
             messages.error(request, "The record does not exist or has already been deleted.")
 
         return redirect("all-students")
-
-# AboutMe view here.
-class AboutMeView(View):
-    context = {}
-    
-    def get(self, request, *args, **kwargs):
-        self.context["title"] = "About Me"
-        return render(request, "student/aboutme.html")

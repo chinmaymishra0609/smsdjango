@@ -12,7 +12,7 @@
 {% block content %}
     <div class="row">
         <div class="col-12">
-            {% include "student/toaster.html" %}
+            {% include "core/toaster.html" %}
         </div>
         <div class="card">
             <div class="card-body">
@@ -226,6 +226,7 @@
                                     <div class="text-danger small">
                                         {{ form.student_image.errors | striptags }}
                                     </div>
+                                    <img class="img-thumbnail mt-2" id="image-preview" src="{% if student.student_image %}{{ student.student_image.url }}{% else %}#{% endif %}" alt="{{ student.student_image.url }}" style="max-height:200px; margin-bottom:10px; {% if not student.student_image %}display:none;{% endif %}" />
                                 </div>
                             </div>
                         </div>
@@ -530,9 +531,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row d-grid mt-4">
-                        <div class="col-12 navigation-buttons">
-                            <button type="button" id="previous-button" class="btn btn-outline-warning float-left">Previous</button>
+                    <div class="row">
+                        <div class="col-12">
+                            <button type="button" id="previous-button" class="btn btn-outline-warning float-start">Previous</button>
                             <button type="button" id="next-button" class="btn btn-outline-primary float-end">Next</button>
                             <button type="submit" id="submit-button" class="btn btn-outline-primary float-end">Submit</button>
                         </div>
@@ -542,6 +543,7 @@
         </div>
     </div>
 {% endblock content %}
+
 {% block javascript %}
     <script type="text/javascript">
         jQuery(document).ready(function(e){
@@ -571,6 +573,23 @@
             });
 
             show_step(current_step);
+
+            jQuery(document).on("change", "#id_student_image", function(e){
+                const input = this;
+                const preview = jQuery("#image-preview");
+
+                if(input.files && input.files[0]){
+                    const reader = new FileReader();
+
+                    reader.onload = function(e){
+                        preview.attr("src", e.target.result).show();
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                } else {
+                    preview.hide().attr("src", "#");
+                }
+            });
         });
     </script>
 {% endblock javascript %}

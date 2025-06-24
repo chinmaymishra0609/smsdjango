@@ -12,7 +12,7 @@
 {% block content %}
     <div class="row">
         <div class="col-md-12">
-            {% include "student/toaster.html" %}
+            {% include "core/toaster.html" %}
         </div>
     </div>
     {% if students %}
@@ -30,7 +30,7 @@
                         </select>
                     </div>
                 </form>
-            </div>            
+            </div>
         </div>
         <div class="row">
             {% for student in students %}
@@ -98,18 +98,18 @@
                             </div>
                         </div>
                     </div>
-                </div>                
+                </div>
             {% endfor %}
         </div>
         <div class="row">
             <div class="col-md-12">
-                {% include "student/pagination-link.html" with page_object=students %}
+                {% include "core/pagination-link.html" with page_object=students %}
             </div>
         </div>
     {% else %}
         <div class="row">
             <div class="col-md-12">
-                {% include "student/no-data-found.html" %}
+                {% include "core/no-data-found.html" %}
             </div>
         </div>
     {% endif %}

@@ -1,0 +1,58 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
+{% block sidebar %}{% endblock sidebar %}
+{% block navbar %}{% endblock navbar %}
+{% block breadcrumb %}{% endblock breadcrumb %}
+
+{% block content %}
+    <div class="row">
+        <div class="offset-3 col-6">
+            {% include "core/toaster.html" %}
+        </div>
+        <div class="row">
+            <div class="offset-3 col-6">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="" method="POST" novalidate>
+                            {% csrf_token %}
+                            <h3 class="mb-4 text-center fw-bold">{{ title }}</h3>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group mb-3">
+                                        {{ form.username.label_tag }}
+                                        {{ form.username }}
+                                        <div class="text-danger small">
+                                            {{ form.username.errors | striptags }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group mb-3">
+                                        {{ form.password.label_tag }}
+                                        {{ form.password }}
+                                        <div class="text-danger small">
+                                            {{ form.password.errors | striptags }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <a type="button" id="signup-button" class="btn btn-outline-warning float-start" href="{% url 'registration' %}">Register</a>
+                                    <button type="submit" id="login-button" class="btn btn-outline-primary float-end">Login</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
