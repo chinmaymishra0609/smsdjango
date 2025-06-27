@@ -1,0 +1,25 @@
+{% load static %}
+<script type="text/javascript">
+    {% if messages %}
+        {% for message in messages %}
+            var notificationTitle = "{{ module }}";
+            var notificationText = "{{ message }}";
+            var notificationType = "{% if message.tags %}{{ message.tags }}{% endif %}";
+            var notificationIcon = "";
+
+            if(notificationType == "success"){
+                notificationIcon = "{% static 'core/assets/images/notification/ok-48.png' %}";
+            }else if(notificationType == "info"){
+                notificationIcon = "{% static 'core/assets/images/notification/survey-48.png' %}";
+            }else if(notificationType == "warning"){
+                notificationIcon = "{% static 'core/assets/images/notification/medium_priority-48.png' %}";
+            }else if(notificationType == "error"){
+                notificationIcon = "{% static 'core/assets/images/notification/high_priority-48.png' %}";                
+            }else{
+                notificationIcon = "{% static 'core/assets/images/notification/clock-48.png' %}";
+            }
+
+            notifier.show(notificationTitle, notificationText, notificationType, notificationIcon, 5000);
+        {% endfor %}
+    {% endif %}
+</script>

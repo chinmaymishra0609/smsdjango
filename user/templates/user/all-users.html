@@ -1,0 +1,121 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
+{% block breadcrumb %}
+    {% include "core/breadcrumb.html" with breadcrumb=title %}
+{% endblock breadcrumb %}
+
+{% block content %}
+    {% if users %}
+        <div class="row justify-content-end">
+            <div class="col-md-3">
+                <form action="" method="GET" id="form-per-page">
+                    <div class="form-group">
+                        <select name="per-page" id="per-page" class="form-select" onchange="this.form.submit()">
+                            <option value="">Records Per Page</option>
+                            <option value="5" {% if per_page == 5 %}selected{% endif %}>5</option>
+                            <option value="10" {% if per_page == 10 %}selected{% endif %}>10</option>
+                            <option value="20" {% if per_page == 20 %}selected{% endif %}>20</option>
+                            <option value="50" {% if per_page == 50 %}selected{% endif %}>50</option>
+                            <option value="100" {% if per_page == 100 %}selected{% endif %}>100</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover" id="pc-dt-simple">
+                                <thead>
+                                    <tr>
+                                        <th>Username</th>
+                                        <th>Name</th>
+                                        <th>Superuser</th>
+                                        <th>Staff</th>
+                                        <th>Active</th>
+                                        <th>Last Login</th>
+                                        <th>Date Joined</th>
+                                        {% if perms.auth.change_user %}
+                                            <th>Actions</th>
+                                        {% endif %}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for user in users %}
+                                        <tr>
+                                            <td>{{ user.username }}</td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <h6 class="mb-0">{{ user.first_name | lower | capfirst }} {{ user.last_name | lower | capfirst }}</h6>
+                                                        <p class="text-muted f-12">{{ user.email | lower }}</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="text-center">
+                                                {% if user.is_superuser %}
+                                                    <i class="text-success ti ti-circle-check f-18"></i>
+                                                {% else %}
+                                                    <i class="text-danger ti ti-circle-x f-18"></i>
+                                                {% endif %}
+                                            </td>
+                                            <td class="text-center">
+                                                {% if user.is_staff %}
+                                                    <i class="text-success ti ti-circle-check f-18"></i>
+                                                {% else %}
+                                                    <i class="text-danger ti ti-circle-x f-18"></i>
+                                                {% endif %}
+                                            </td>
+                                            <td class="text-center">
+                                                {% if user.is_active %}
+                                                    <i class="text-success ti ti-circle-check f-18"></i>
+                                                {% else %}
+                                                    <i class="text-danger ti ti-circle-x f-18"></i>
+                                                {% endif %}
+                                            </td>
+                                            <td>{{ user.last_login | date:"d/M/Y h:i:s A" }}</td>
+                                            <td>{{ user.date_joined | date:"d/M/Y h:i:s A" }}</td>
+                                            {% if perms.auth.change_user %}
+                                                <td class="text-center">
+                                                    <ul class="list-inline me-auto mb-0">
+                                                        <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="Edit">
+                                                            <a href="{% url 'update-user' user.id %}" class="btn-link-primary">
+                                                                <i class="ti ti-edit-circle f-18"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </td>
+                                            {% endif %}
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                {% include "core/pagination-link.html" with page_object=users %}
+            </div>
+        </div>
+    {% else %}
+        <div class="row">
+            <div class="col-md-12">
+                {% include "core/no-data-found.html" %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock content %}
+
+{%block notification %}
+    {% include "core/notification.html" with module="User" %}
+{% endblock notification %}

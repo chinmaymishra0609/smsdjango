@@ -1,5 +1,4 @@
 from pathlib import Path
-from django.contrib.messages import constants as messages
 from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -117,6 +116,5 @@ STATIC_ROOT = BASE_DIR / "static"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-MESSAGE_TAGS = { messages.ERROR: "danger" }
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"

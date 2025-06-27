@@ -1,0 +1,55 @@
+{% load static %}
+
+<header class="pc-header">
+    <div class="header-wrapper">
+        <!-- [Mobile Media Block] start -->
+        <div class="me-auto pc-mob-drp">
+            <ul class="list-unstyled">
+                <!-- ======= Menu collapse Icon ===== -->
+                <li class="pc-h-item pc-sidebar-collapse">
+                    <a href="#" class="pc-head-link ms-0" id="sidebar-hide">
+                        <i class="ti ti-menu-2"></i>
+                    </a>
+                </li>
+                <li class="pc-h-item pc-sidebar-popup">
+                    <a href="#" class="pc-head-link ms-0" id="mobile-collapse">
+                        <i class="ti ti-menu-2"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- [Mobile Media Block end] -->
+
+        <div class="ms-auto">
+            <ul class="list-unstyled">
+                <li class="dropdown pc-h-item header-user-profile">
+                    <a class="pc-head-link dropdown-toggle arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" data-bs-auto-close="outside" aria-expanded="false">
+                        <span>{{ request.user.first_name | lower | capfirst }} {{ request.user.last_name | lower | capfirst }}</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-user-profile dropdown-menu-end pc-h-dropdown">
+                        <div class="tab-content" id="mysrpTabContent">
+                            <div class="tab-pane fade show active" id="drp-tab-1" role="tabpanel" aria-labelledby="drp-t1" tabindex="0">
+                                <a href="{% url 'update-profile' request.user.id %}" class="dropdown-item">
+                                    <i class="ti ti-edit-circle"></i>
+                                    <span>Update Profile</span>
+                                </a>
+                                <a href="{% url 'change-password' %}" class="dropdown-item">
+                                    <i class="ti ti-key"></i>
+                                    <span>Change Password</span>
+                                </a>
+                                <a href="{% url 'set-password' %}" class="dropdown-item">
+                                    <i class="ti ti-key"></i>
+                                    <span>Set Password</span>
+                                </a>
+                                <a href="{% url 'logout' %}" class="dropdown-item">
+                                    <i class="ti ti-logout"></i>
+                                    <span>Logout</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>

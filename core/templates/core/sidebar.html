@@ -1,0 +1,60 @@
+{% load static %}
+
+<nav class="pc-sidebar">
+    <div class="navbar-wrapper">
+        <div class="m-header">
+            <a href="#" class="b-brand text-primary">
+                <!-- ========   Change your logo from here   ============ -->
+                <img src="{% static 'core/assets/images/student-logo.jpg' %}" class="img-fluid logo-lg" alt="logo">
+            </a>
+        </div>
+        <div class="navbar-content">
+            <ul class="pc-navbar">
+                <li class="pc-item">
+                    <a href="{% url 'dashboard' %}" class="pc-link">
+                        <span class="pc-micon"><i class="ti ti-dashboard"></i></span>
+                        <span class="pc-mtext">Dashboard</span>
+                    </a>
+                </li>
+                {% if perms.student.add_student %}
+                    <li class="pc-item">
+                        <a href="{% url 'add-student' %}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-user"></i></span>
+                            <span class="pc-mtext">Add Student</span>
+                        </a>
+                    </li>
+                {% endif %}
+                {% if perms.student.view_student or perms.student.change_student or perms.student.delete_student %}
+                <li class="pc-item">
+                    <a href="{% url 'all-students' %}" class="pc-link">
+                        <span class="pc-micon"><i class="ti ti-users"></i></span>
+                        <span class="pc-mtext">All Students</span>
+                    </a>
+                </li>
+                {% endif %}
+                {% if perms.auth.add_user %}
+                <li class="pc-item">
+                    <a href="{% url 'add-user' %}" class="pc-link">
+                        <span class="pc-micon"><i class="ti ti-user"></i></span>
+                        <span class="pc-mtext">Add User</span>
+                    </a>
+                </li>
+                {% endif %}
+                {% if perms.auth.view_user or perms.auth.change_user or perms.auth.delete_user %}
+                    <li class="pc-item">
+                        <a href="{% url 'all-users' %}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-users"></i></span>
+                            <span class="pc-mtext">All Users</span>
+                        </a>
+                    </li>
+                {% endif %}
+                <li class="pc-item">
+                    <a href="{% url 'all-students' %}" class="pc-link">
+                        <span class="pc-micon"><i class="ti ti-code"></i></span>
+                        <span class="pc-mtext">About Developer</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

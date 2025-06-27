@@ -6,14 +6,11 @@
 {% endblock title %}
 
 {% block breadcrumb %}
-    {% include "student/breadcrumb.html" with breadcrumb=title %}
+    {% include "core/breadcrumb.html" with breadcrumb=title %}
 {% endblock breadcrumb %}
 
 {% block content %}
     <div class="row">
-        <div class="col-12">
-            {% include "core/toaster.html" %}
-        </div>
         <div class="card">
             <div class="card-body">
                 <form action="" method="POST" enctype="multipart/form-data" novalidate>
@@ -544,6 +541,10 @@
     </div>
 {% endblock content %}
 
+{%block notification %}
+    {% include "core/notification.html" with module="Student" %}
+{% endblock notification %}
+
 {% block javascript %}
     <script type="text/javascript">
         jQuery(document).ready(function(e){
@@ -564,7 +565,7 @@
                     show_step(current_step);
                 }
             });
-            
+
             jQuery(document).on("click", "#next-button", function(){
                 if(current_step < total_steps){
                     current_step++;

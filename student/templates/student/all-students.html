@@ -6,7 +6,7 @@
 {% endblock title %}
 
 {% block breadcrumb %}
-    {% include "student/breadcrumb.html" with breadcrumb=title %}
+    {% include "core/breadcrumb.html" with breadcrumb=title %}
 {% endblock breadcrumb %}
 
 {% block content %}
@@ -50,9 +50,17 @@
                                         <i class="ti ti-dots-vertical f-18"></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end">
-                                        <a class="dropdown-item" href="{% url 'get-student' student.id %}">View</a>
-                                        <a class="dropdown-item" href="{% url 'update-student' student.id %}">Update</a>
-                                        <a class="dropdown-item" href="{% url 'delete-student' student.id %}">Delete</a>
+                                        {% if perms.student.view_student %}
+                                            <a class="dropdown-item" href="{% url 'get-student' student.id %}">View</a>
+                                        {% endif %}
+
+                                        {% if perms.student.change_student %}
+                                            <a class="dropdown-item" href="{% url 'update-student' student.id %}">Update</a>
+                                        {% endif %}
+
+                                        {% if perms.student.delete_student %}
+                                            <a class="dropdown-item" href="{% url 'delete-student' student.id %}">Delete</a>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
