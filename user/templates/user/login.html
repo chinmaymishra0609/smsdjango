@@ -6,41 +6,32 @@
 {% endblock title %}
 
 {% block content %}
-    <div class="auth-main">
-        <div class="auth-wrapper v3">
-            <div class="auth-form">
-                <div class="auth-header">
-                    <img src="{% static 'core/assets/images/student-logo.jpg' %}" alt="student-logo.jpg">
-                </div>
-                <div class="card my-5">
-                    <div class="card-body">
-                        <form action="" method="POST" novalidate>
-                            {% csrf_token %}
-                            <h3 class="mb-4 text-center fw-bold">{{ title }}</h3>
-                            <div class="form-group mb-3">
-                                {{ form.username.label_tag }}
-                                {{ form.username }}
-                                <div class="text-danger small">
-                                    {{ form.username.errors | striptags }}
-                                </div>
-                            </div>
-                            <div class="form-group mb-3">
-                                {{ form.password.label_tag }}
-                                {{ form.password }}
-                                <div class="text-danger small">
-                                    {{ form.password.errors | striptags }}
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12 d-flex justify-content-between align-items-end">
-                                    <h5 class="text-secondary f-w-400">Forgot Password?</h5>
-                                    <button type="submit" id="login-button" class="btn btn-outline-primary float-end">Login</button>
-                                </div>
-                            </div>
-                        </form>
+    <div class="card my-5">
+        <div class="card-body">
+            <form action="" method="POST" novalidate>
+                {% csrf_token %}
+                <h3 class="mb-4 text-center fw-bold">{{ title }}</h3>
+                <div class="form-group mb-3">
+                    {{ form.username.label_tag }}
+                    {{ form.username }}
+                    <div class="text-danger small">
+                        {{ form.username.errors | striptags }}
                     </div>
                 </div>
-            </div>
+                <div class="form-group mb-3">
+                    {{ form.password.label_tag }}
+                    {{ form.password }}
+                    <div class="text-danger small">
+                        {{ form.password.errors | striptags }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 d-flex justify-content-between align-items-end">
+                        <h5 class="text-secondary f-w-400"><a href="{% url 'forgot-password' %}">Forgot Password?</a> </h5>
+                        <button type="submit" id="login-button" class="btn btn-outline-primary float-end">Login</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 {% endblock content %}

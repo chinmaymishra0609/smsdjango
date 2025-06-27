@@ -7,32 +7,35 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<link rel="icon" href="{% static 'core/assets/images/student-small-logo.jpg' %}" type="image/x-icon">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap" id="main-font-link">
-		<link rel="stylesheet" href="{% static 'core/assets/css/plugins/notifier.css' %}">
+		<link rel="stylesheet" href="{% static 'core/assets/fonts/tabler-icons.min.css' %}" >
+    	<link rel="stylesheet" href="{% static 'core/assets/css/plugins/notifier.css' %}">
 		<link rel="stylesheet" href="{% static 'core/assets/css/style.css' %}" id="main-style-link">
 		<title>{% block title %}{% endblock title %}</title>
 	</head>
 
 	<body>
-		{% block content %}{% endblock content %}
-
-		{% block footer %}
-			<footer class="pc-footer">
-				<div class="footer-wrapper container-fluid">
-					<div class="auth-footer row float-end">
-						<div class="col-auto my-1">
-							<ul class="list-inline footer-link mb-0">
-								<li class="list-inline-item"><a href="https://www.linkedin.com/in/chinmaymishra0609/" target="_blank">LinkedIn</a></li>
-								<li class="list-inline-item"><a href="https://www.facebook.com/chinmaymishra0609/" target="_blank">Facebook</a></li>
-								<li class="list-inline-item"><a href="https://github.com/chinmaymishra0609/smsdjango" target="_blank">Github</a></li>
-								<li class="list-inline-item"><a href="https://x.com/chinmaymishra06" target="_blank">Twitter</a></li>
-								<li class="list-inline-item"><a href="https://www.instagram.com/chinmaymishra0609/" target="_blank">Instagram</a></li>
-								<li class="list-inline-item"><a href="https://wa.me/8690736210" target="_blank">WhatsApp</a></li>
-							</ul>
-						</div>
-					</div>
+		<div class="auth-main">
+			<div class="auth-wrapper v3">
+				<div class="auth-form d-flex justify-content-center align-items-center">
+					{% block content %}{% endblock content %}
+			
+					{% block footer %}
+						<footer>
+							<div class="row text-xl">
+								<div class="col-md-12">
+									<a href="https://www.linkedin.com/in/chinmaymishra0609/" target="_blank"><span class="pc-micon"><i class="ti ti-brand-linkedin"></i></span></a>
+									<a href="https://www.facebook.com/chinmaymishra0609/" target="_blank"><span class="pc-micon"><i class="ti ti-brand-facebook"></i></span></a>	
+									<a href="https://github.com/chinmaymishra0609/smsdjango" target="_blank"><span class="pc-micon"><i class="ti ti-brand-github"></i></span></a>	
+									<a href="https://x.com/chinmaymishra06" target="_blank"><span class="pc-micon"><i class="ti ti-brand-twitter"></i></span></a>	
+									<a href="https://www.instagram.com/chinmaymishra0609/" target="_blank"><span class="pc-micon"><i class="ti ti-brand-instagram"></i></span></a>	
+									<a href="https://wa.me/8690736210" target="_blank"><span class="pc-micon"><i class="ti ti-brand-whatsapp"></i></span></a>	
+								</div>
+							</div>
+						</footer>
+					{% endblock footer %}
 				</div>
-			</footer>
-		{% endblock footer %}
+			</div>
+		</div>
 
 		<script src="{% static 'core/assets/js/plugins/notifier.js' %}"></script>
 		{% block notification %}{% endblock notification %}
