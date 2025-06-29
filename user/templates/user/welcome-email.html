@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{{ title }}</title>
+    </head>
+	<body style="font-family: sans-serif;">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td align="center">
+                    <table width="600" border="0" cellspacing="0" cellpadding="0" style="border: 1px solid #ccc;">
+                        <tr>
+                            <td style="padding: 20px; padding-top: 0;">
+                                <h1 style="color: #333; text-align: center;">{{ title }}</h1>
+                                <p style="color: #666;">Hi {{ user.first_name | lower | capfirst }} {{ user.last_name | lower | capfirst }},</p>
+                                <p style="color: #666;">Thank you for joining our team. We are thrilled to have you on board.</p><br/>
+                                <p style="color: #666;">
+                                    <span>Username: {{ user.username | lower }}</span><br/>
+                                    <span>Password: {{ password }}</span><br/>
+                                </p>
+                                <p style="color: #666;"></p>
+                                <p style="text-align: center; margin: 20px 0;">
+                                    <a href="{{ protocol }}://{{ domain }}{% url 'login' %}" style="background-color: #4CAF50; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Login Now</a>
+                                </p>
+                                <p style="color: #666;">You are receiving this email because you signed up on our website.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: #f5f5f5; padding: 10px; text-align: center;">
+                                <p style="font-size: 12px; color: #999;">&copy; 2025 Student Management System. All rights reserved.</p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+	</body>
+</html>

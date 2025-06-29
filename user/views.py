@@ -11,6 +11,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views import View
 from student.models import Student
+from core.views import CustomSendMail
 
 # User login view here.
 class UserLoginView(View):
@@ -124,10 +125,24 @@ class UserPasswordResetConfirmView(View):
                 result = self.context["form"].save()
 
                 if result:
-                    messages.success(request=request, message="The password has been reset successfully.")
+                    custom_send_mail = CustomSendMail()
+                    is_mail_send = custom_send_mail.send_mail(request=request,
+                        subject         = "Your Password Has Been Changed",
+                        template_name   = "user/password-change-email.html",
+                        template_params = {"user":user, "title":"Your Password Changed"},
+                        recipient_list  = [user.email],
+                    )
+
+                    if is_mail_send:
+                        messages.success(request=request, message="The password has been reset successfully.")
+                    else:
+                        messages.error(request=request, message="The password has been reset but email not sent.")
+
+                    return redirect("password-reset-complete")
                 else:
                     messages.error(request=request, message="The password has not been reset. Try again.")
-                return redirect("password-reset-complete")
+
+                return redirect("login")
         else:
             messages.error(request=request, message="The password reset link is invalid or expired.")
             return redirect("password-reset")
@@ -188,10 +203,27 @@ class UserCreateView(LoginRequiredMixin, View):
             user = self.context["form"].save()
 
             if user:
-                messages.success(request=request, message="The record has been saved successfully.")
+                custom_send_mail = CustomSendMail()
+                is_mail_send = custom_send_mail.send_mail(
+                    request=request,
+                    subject         = "Welcome to SMS",
+                    recipient_list  = [user.email],
+                    template_name   = "user/welcome-email.html",
+                    template_params = {
+                        "title":"Welcome to SMS",
+                        "user":user,
+                        "password":self.context["form"].cleaned_data.get("password1"),
+                    }
+                )
+
+                if is_mail_send:
+                    messages.success(request=request, message="The record has been saved successfully.")
+                else:
+                    messages.error(request=request, message="The record has been saved but email not sent.")
+
                 return redirect("add-user")
             else:
-                messages.error(request=request, message="The record has not been saved. Try again.")
+                messages.error(request=request, message="The password has not been reset. Try again.")
 
         return render(request=request, template_name="user/add-update-user.html", context=self.context)
 
