@@ -1,9 +1,12 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.contrib import messages
-from .forms import CustomUserCreateForm, CustomUserUpdateForm, CustomUserLoginForm, CustomUserChangePasswordForm, CustomUserSetPasswordForm, CustomUpdateAdminProfileForm, CustomUpdateUserProfileForm
+from .forms import CustomUserCreateForm, CustomUserUpdateForm, CustomUserLoginForm, CustomUserChangePasswordForm, CustomUserSetPasswordForm, CustomUpdateAdminProfileForm, CustomUpdateUserProfileForm, CustomPasswordResetForm
 from django.contrib.auth import login, logout, update_session_auth_hash
+from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordResetCompleteView
+from django.utils.http import urlsafe_base64_decode
 from django.contrib.auth.models import User
+from django.contrib.auth.tokens import default_token_generator
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views import View
@@ -24,7 +27,7 @@ class UserLoginView(View):
     def post(self, request, *args, **kwargs):
         self.context["title"] = "Login"
         self.context["form"] = CustomUserLoginForm(request=request, data=request.POST, label_suffix="")
-    
+
         if self.context["form"].is_valid():
             login(request=request, user=self.context["form"].get_user())
             messages.success(request=request, message="You have successfully logged in.")
@@ -33,6 +36,114 @@ class UserLoginView(View):
             messages.error(request=request, message="Invalid credential. Try again.")
 
         return render(request=request, template_name="user/login.html", context=self.context)
+
+# User password reset view here.
+class UserPasswordResetView(PasswordResetView):
+    context = {}
+
+    html_email_template_name = "user/password-reset-email.html"
+    email_template_name = "user/password-reset-email.html"
+    subject_template_name = "user/password-reset-subject.txt"
+    success_url = reverse_lazy("password-reset-done")
+
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect("dashboard")
+
+        self.context["title"] = "Reset Password"
+        self.context["form"] = CustomPasswordResetForm(label_suffix="")
+
+        return render(request=request, template_name="user/password-reset.html", context=self.context)
+
+    def post(self, request, *args, **kwargs):
+        self.context["title"] = "Reset Password"
+        self.context["form"] = CustomPasswordResetForm(request.POST, label_suffix="")
+
+        if self.context["form"].is_valid():
+            response = super().post(request, *args, **kwargs)
+
+            if response.status_code == 302:
+                messages.success(request=request, message="The password reset link has been sent.")
+            else:
+                messages.error(request=request, message="The password reset link has not been sent. Try again.")
+
+            return redirect("password-reset-done")
+
+        return render(request=request, template_name="user/password-reset.html", context=self.context)
+
+# User password reset done view here.
+class UserPasswordResetDoneView(PasswordResetDoneView):
+    context = {}
+
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect("dashboard")
+
+        self.context["title"] = "Password Reset Link Sent"
+
+        return render(request=request, template_name="user/password-reset-done.html", context=self.context)
+
+# User password reset confirm view here.
+class UserPasswordResetConfirmView(View):
+    context = {}
+
+    def get_user(self, uidb64):
+        # Try to get the user.
+        try:
+            uid = urlsafe_base64_decode(uidb64).decode()
+            user = User.objects.get(pk=uid)
+        except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+            user = None
+
+        # Return the response.
+        return user
+
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect("dashboard")
+
+        user = self.get_user(kwargs.get("uidb64"))
+
+        if user is not None and default_token_generator.check_token(user, kwargs.get("token")):
+            self.context["validlink"] = True
+            self.context["title"] = "New Password"
+            self.context["form"] = CustomUserSetPasswordForm(label_suffix="", user=user)
+            return render(request=request, template_name="user/password-reset-confirm.html", context=self.context)
+        else:
+            messages.error(request=request, message="The password reset link is invalid or expired.")
+            return redirect("password-reset")
+
+    def post(self, request, *args, **kwargs):
+        user = self.get_user(kwargs.get("uidb64"))
+
+        if user is not None and default_token_generator.check_token(user, kwargs.get("token")):
+            self.context["title"] = "New Password"
+            self.context["form"] = CustomUserSetPasswordForm(label_suffix="", data=request.POST, user=user)
+
+            if self.context["form"].is_valid():
+                result = self.context["form"].save()
+
+                if result:
+                    messages.success(request=request, message="The password has been reset successfully.")
+                else:
+                    messages.error(request=request, message="The password has not been reset. Try again.")
+                return redirect("password-reset-complete")
+        else:
+            messages.error(request=request, message="The password reset link is invalid or expired.")
+            return redirect("password-reset")
+
+        return render(request=request, template_name="user/password-reset-confirm.html", context=self.context)
+
+# User password reset complete view here.
+class UserPasswordResetCompleteView(PasswordResetCompleteView):
+    context = {}
+
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect("dashboard")
+
+        self.context["title"] = "New Password"
+        return render(request=request, template_name="user/password-reset-complete.html", context=self.context)
 
 # Create Dashboard view here.
 class UserDashboardView(LoginRequiredMixin, View):
@@ -176,7 +287,7 @@ class UserListView(LoginRequiredMixin, View):
 
     context = {}
 
-    def get(self, request):            
+    def get(self, request):
         if not request.user.has_perm("auth.view_user") and not request.user.has_perm("auth.change_user") and not request.user.has_perm("auth.delete_user"):
             messages.error(request=request, message="You do not have permission to access this page.")
             return redirect("dashboard")

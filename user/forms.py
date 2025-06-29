@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User, Group, Permission
 from django.core.exceptions import ValidationError
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UserChangeForm, PasswordChangeForm, SetPasswordForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UserChangeForm, PasswordChangeForm, SetPasswordForm, PasswordResetForm
 
 # Create custom user change form here.
 class CustomUserChangeForm(UserChangeForm):
@@ -57,7 +57,7 @@ class CustomUserChangeForm(UserChangeForm):
 
 # Create custom user create form here.
 class CustomUserCreateForm(CustomUserChangeForm, UserCreationForm):
-    password1 = forms.CharField(label="Password", widget=forms.PasswordInput( attrs={"class":"form-control"}))
+    password1 = forms.CharField(label="Password", widget=forms.PasswordInput(attrs={"class":"form-control"}))
     password2 = forms.CharField(label="Confirm Password", widget=forms.PasswordInput(attrs={"class":"form-control"}))
 
     class Meta(CustomUserChangeForm.Meta):
@@ -99,6 +99,17 @@ class CustomUpdateUserProfileForm(CustomUserChangeForm):
     class Meta:
         model = User
         fields = ["username", "first_name", "last_name", "email", "date_joined", "last_login"]
+
+# Create custom password reset form here.
+class CustomPasswordResetForm(PasswordResetForm):
+    email = forms.EmailField(label="Email", required=True, widget=forms.EmailInput(attrs={"class":"form-control"}))
+
+    def clean_email(self):
+        email = self.cleaned_data.get("email")
+
+        if not User.objects.filter(email=email).exists():
+            raise ValidationError("Email address it not exist.")
+        return email
 
 # Create custom user login form here.
 class CustomUserLoginForm(AuthenticationForm):
