@@ -323,8 +323,7 @@ class CustomPasswordResetForm(PasswordResetForm):
     email = forms.EmailField(
         label="Email",
         required=True,
-        widget=forms.EmailInput(attrs={"class": "form-control"
-        })
+        widget=forms.EmailInput(attrs={"class": "form-control"})
     )
 
     # Custom validation for the email field.
@@ -335,7 +334,7 @@ class CustomPasswordResetForm(PasswordResetForm):
         # Check if the email exists in the User model.
         if not User.objects.filter(email=email).exists():
             # Raise a validation error if the email is not associated with any user.
-            raise ValidationError("Email address is does not exist.")
+            raise ValidationError("Email address does not exist.")
 
         # Return the validated email if it exists.
         return email
@@ -355,8 +354,7 @@ class CustomUserLoginForm(AuthenticationForm):
     # Override the password field to use a password input widget with styling.
     password = forms.CharField(
         label="Password",
-        widget=forms.PasswordInput(attrs={"class": "form-control"
-        })
+        widget=forms.PasswordInput(attrs={"class": "form-control"})
     )
 
 # Create custom user set password form here.
@@ -367,15 +365,13 @@ class CustomUserSetPasswordForm(SetPasswordForm):
     # Override the new_password1 field to set a custom label and apply Bootstrap styling.
     new_password1 = forms.CharField(
         label="New Password",
-        widget=forms.PasswordInput(attrs={"class": "form-control"
-        })
+        widget=forms.PasswordInput(attrs={"class": "form-control"})
     )
 
     # Override the new_password2 field (confirmation password) with similar styling.
     new_password2 = forms.CharField(
         label="Confirm New Password",
-        widget=forms.PasswordInput(attrs={"class": "form-control"
-        })
+        widget=forms.PasswordInput(attrs={"class": "form-control"})
     )
 
 # Create custom user change password form here.
@@ -388,8 +384,7 @@ class CustomUserChangePasswordForm(PasswordChangeForm):
     # This field is required to verify the user's identity before allowing a password change.
     old_password = forms.CharField(
         label="Old Password",
-        widget=forms.PasswordInput(attrs={"class": "form-control"
-        })
+        widget=forms.PasswordInput(attrs={"class": "form-control"})
     )
 
     # Define the field for the new password (first entry).
