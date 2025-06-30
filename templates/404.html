@@ -1,0 +1,32 @@
+{% extends "core/base.html" %}
+
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
+{% block sidebar %}{% endblock sidebar %}
+{% block nvabar %}{% endblock nvabar %}
+
+{% block breadcrumb %}
+    {% include "core/breadcrumb.html" with breadcrumb=title %}
+{% endblock breadcrumb %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            {% include "core/no-data-found.html" %}
+        </div>
+    </div>
+{% endblock content %}
+
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No Data Found</title>
+</head>
+<body>
+    <h1>No Data Found</h1>
+</body>
+</html> {% endcomment %}
