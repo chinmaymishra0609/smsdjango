@@ -609,11 +609,10 @@ class UserUpdateProfileView(LoginRequiredMixin, View):
         Displays the user profile update form based on user type (admin or regular).
         Ensures proper permission or ownership before allowing access.
         """
-
         try:
             # Permission check:
             # Allow only if the user has 'change_user' permission OR is editing their own profile.
-            if not request.user.has_perm("auth.change_user") and request.user.id != kwargs.get("pk"):
+            if not request.user.has_perm("auth.change_user") or request.user.id != kwargs.get("pk"):
                 messages.error(request=request, message="You do not have permission to access this page.")
                 return redirect("dashboard")
 
