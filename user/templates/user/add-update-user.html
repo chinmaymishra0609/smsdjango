@@ -96,6 +96,28 @@
                             </div>
                         </div>
                     {% endif %}
+                    {% if form.date_joined %}
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.date_joined.label_tag }}
+                                {{ form.date_joined }}
+                                <div class="text-danger small">
+                                    {{ form.date_joined.errors | striptags }}
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% if form.last_login %}
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.last_login.label_tag }}
+                                {{ form.last_login }}
+                                <div class="text-danger small">
+                                    {{ form.last_login.errors | striptags }}
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
                     {% if "is_superuser" in form.fields %}
                         <div class="col-12 col-sm-6 col-md-6">
                             <div class="form-group mb-3">
@@ -129,28 +151,6 @@
                             </div>
                         </div>
                     {%endif %}
-                    {% if form.date_joined %}
-                        <div class="col-12 col-sm-6 col-md-6">
-                            <div class="form-group mb-3">
-                                {{ form.date_joined.label_tag }}
-                                {{ form.date_joined }}
-                                <div class="text-danger small">
-                                    {{ form.date_joined.errors | striptags }}
-                                </div>
-                            </div>
-                        </div>
-                    {% endif %}
-                    {% if form.last_login %}
-                        <div class="col-12 col-sm-6 col-md-6">
-                            <div class="form-group mb-3">
-                                {{ form.last_login.label_tag }}
-                                {{ form.last_login }}
-                                <div class="text-danger small">
-                                    {{ form.last_login.errors | striptags }}
-                                </div>
-                            </div>
-                        </div>
-                    {% endif %}
                 </div>
                 <div class="row">
                     <div class="col-12">
