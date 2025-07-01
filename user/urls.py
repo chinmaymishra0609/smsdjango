@@ -8,7 +8,7 @@ from user import views
 urlpatterns = [
     # URL pattern for the user dashboard; uses UserDashboardView class-based view.
     # URL: /user/dashboard, Name: dashboard.
-    path("dashboard", views.UserDashboardView.as_view(), name="dashboard"),
+    path("dashboard/", views.UserDashboardView.as_view(), name="dashboard"),
 
     # URL pattern to add a new user; uses UserCreateView.
     # URL: /user/add/, Name: add-user.

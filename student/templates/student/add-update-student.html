@@ -10,306 +10,346 @@
 {% endblock breadcrumb %}
 
 {% block content %}
-    <div class="row">
-        <div class="card">
-            <div class="card-body">
-                <form action="" method="POST" enctype="multipart/form-data" novalidate>
-                    {% csrf_token %}
-                    <div class="step active" id="step-1">
-                        <h3 class="mb-4 text-center fw-bold">Student Information</h3>
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.student_first_name.label_tag }}
-                                    {{ form.student_first_name }}
-                                    <div class="text-danger small">
-                                        {{ form.student_first_name.errors | striptags }}
-                                    </div>
+    <div class="card">
+        <div class="card-body">
+            <form action="" method="POST" enctype="multipart/form-data" novalidate>
+                {% csrf_token %}
+                <div class="step active" id="step-1">
+                    <h3 class="mb-4 text-center fw-bold">Student Information</h3>
+                    <div class="row">
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.student_first_name.label_tag }}
+                                {{ form.student_first_name }}
+                                <div class="text-danger small">
+                                    {{ form.student_first_name.errors | striptags }}
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.student_middle_name.label_tag }}
-                                    {{ form.student_middle_name }}
-                                    <div class="text-danger small">
-                                        {{ form.student_middle_name.errors | striptags }}
-                                    </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.student_middle_name.label_tag }}
+                                {{ form.student_middle_name }}
+                                <div class="text-danger small">
+                                    {{ form.student_middle_name.errors | striptags }}
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.student_last_name.label_tag }}
-                                    {{ form.student_last_name }}
-                                    <div class="text-danger small">
-                                        {{ form.student_last_name.errors | striptags }}
-                                    </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.student_last_name.label_tag }}
+                                {{ form.student_last_name }}
+                                <div class="text-danger small">
+                                    {{ form.student_last_name.errors | striptags }}
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.student_father_first_name.label_tag }}
-                                    {{ form.student_father_first_name }}
-                                    <div class="text-danger small">
-                                        {{ form.student_father_first_name.errors | striptags }}
-                                    </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.student_father_first_name.label_tag }}
+                                {{ form.student_father_first_name }}
+                                <div class="text-danger small">
+                                    {{ form.student_father_first_name.errors | striptags }}
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.student_father_middle_name.label_tag }}
-                                    {{ form.student_father_middle_name }}
-                                    <div class="text-danger small">
-                                        {{ form.student_father_middle_name.errors | striptags }}
-                                    </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.student_father_middle_name.label_tag }}
+                                {{ form.student_father_middle_name }}
+                                <div class="text-danger small">
+                                    {{ form.student_father_middle_name.errors | striptags }}
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.student_father_last_name.label_tag }}
-                                    {{ form.student_father_last_name }}
-                                    <div class="text-danger small">
-                                        {{ form.student_father_last_name.errors | striptags }}
-                                    </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.student_father_last_name.label_tag }}
+                                {{ form.student_father_last_name }}
+                                <div class="text-danger small">
+                                    {{ form.student_father_last_name.errors | striptags }}
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.student_mother_first_name.label_tag }}
-                                    {{ form.student_mother_first_name }}
-                                    <div class="text-danger small">
-                                        {{ form.student_mother_first_name.errors | striptags }}
-                                    </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.student_mother_first_name.label_tag }}
+                                {{ form.student_mother_first_name }}
+                                <div class="text-danger small">
+                                    {{ form.student_mother_first_name.errors | striptags }}
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.student_mother_middle_name.label_tag }}
-                                    {{ form.student_mother_middle_name }}
-                                    <div class="text-danger small">
-                                        {{ form.student_mother_middle_name.errors | striptags }}
-                                    </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.student_mother_middle_name.label_tag }}
+                                {{ form.student_mother_middle_name }}
+                                <div class="text-danger small">
+                                    {{ form.student_mother_middle_name.errors | striptags }}
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.student_mother_last_name.label_tag }}
-                                    {{ form.student_mother_last_name }}
-                                    <div class="text-danger small">
-                                        {{ form.student_mother_last_name.errors | striptags }}
-                                    </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.student_mother_last_name.label_tag }}
+                                {{ form.student_mother_last_name }}
+                                <div class="text-danger small">
+                                    {{ form.student_mother_last_name.errors | striptags }}
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.student_email.label_tag }}
-                                    {{ form.student_email }}
-                                    <div class="text-danger small">
-                                        {{ form.student_email.errors | striptags }}
-                                    </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.student_email.label_tag }}
+                                {{ form.student_email }}
+                                <div class="text-danger small">
+                                    {{ form.student_email.errors | striptags }}
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.student_phone_number.label_tag }}
-                                    {{ form.student_phone_number }}
-                                    <div class="text-danger small">
-                                        {{ form.student_phone_number.errors | striptags }}
-                                    </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.student_phone_number.label_tag }}
+                                {{ form.student_phone_number }}
+                                <div class="text-danger small">
+                                    {{ form.student_phone_number.errors | striptags }}
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.student_birth_date.label_tag }}
-                                    {{ form.student_birth_date }}
-                                    <div class="text-danger small">
-                                        {{ form.student_birth_date.errors | striptags }}
-                                    </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.student_birth_date.label_tag }}
+                                {{ form.student_birth_date }}
+                                <div class="text-danger small">
+                                    {{ form.student_birth_date.errors | striptags }}
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.student_gender.label_tag }}
-                                    {{ form.student_gender }}
-                                    <div class="text-danger small">
-                                        {{ form.student_gender.errors | striptags }}
-                                    </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.student_gender.label_tag }}
+                                {{ form.student_gender }}
+                                <div class="text-danger small">
+                                    {{ form.student_gender.errors | striptags }}
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.student_semester.label_tag }}
-                                    {{ form.student_semester }}
-                                    <div class="text-danger small">
-                                        {{ form.student_semester.errors | striptags }}
-                                    </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.student_semester.label_tag }}
+                                {{ form.student_semester }}
+                                <div class="text-danger small">
+                                    {{ form.student_semester.errors | striptags }}
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.student_id.label_tag }}
-                                    {{ form.student_id }}
-                                    <div class="text-danger small">
-                                        {{ form.student_id.errors | striptags }}
-                                    </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.student_id.label_tag }}
+                                {{ form.student_id }}
+                                <div class="text-danger small">
+                                    {{ form.student_id.errors | striptags }}
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.student_entry_year.label_tag }}
-                                    {{ form.student_entry_year }}
-                                    <div class="text-danger small">
-                                        {{ form.student_entry_year.errors | striptags }}
-                                    </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.student_entry_year.label_tag }}
+                                {{ form.student_entry_year }}
+                                <div class="text-danger small">
+                                    {{ form.student_entry_year.errors | striptags }}
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.student_address_line_1.label_tag }}
-                                    {{ form.student_address_line_1 }}
-                                    <div class="text-danger small">
-                                        {{ form.student_address_line_1.errors | striptags }}
-                                    </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.student_address_line_1.label_tag }}
+                                {{ form.student_address_line_1 }}
+                                <div class="text-danger small">
+                                    {{ form.student_address_line_1.errors | striptags }}
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.student_address_line_2.label_tag }}
-                                    {{ form.student_address_line_2 }}
-                                    <div class="text-danger small">
-                                        {{ form.student_address_line_2.errors | striptags }}
-                                    </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.student_address_line_2.label_tag }}
+                                {{ form.student_address_line_2 }}
+                                <div class="text-danger small">
+                                    {{ form.student_address_line_2.errors | striptags }}
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.student_city.label_tag }}
-                                    {{ form.student_city }}
-                                    <div class="text-danger small">
-                                        {{ form.student_city.errors | striptags }}
-                                    </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.student_city.label_tag }}
+                                {{ form.student_city }}
+                                <div class="text-danger small">
+                                    {{ form.student_city.errors | striptags }}
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.student_state.label_tag }}
-                                    {{ form.student_state }}
-                                    <div class="text-danger small">
-                                        {{ form.student_state.errors | striptags }}
-                                    </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.student_state.label_tag }}
+                                {{ form.student_state }}
+                                <div class="text-danger small">
+                                    {{ form.student_state.errors | striptags }}
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.student_zip.label_tag }}
-                                    {{ form.student_zip }}
-                                    <div class="text-danger small">
-                                        {{ form.student_zip.errors | striptags }}
-                                    </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.student_zip.label_tag }}
+                                {{ form.student_zip }}
+                                <div class="text-danger small">
+                                    {{ form.student_zip.errors | striptags }}
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.student_country.label_tag }}
-                                    {{ form.student_country }}
-                                    <div class="text-danger small">
-                                        {{ form.student_country.errors | striptags }}
-                                    </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.student_country.label_tag }}
+                                {{ form.student_country }}
+                                <div class="text-danger small">
+                                    {{ form.student_country.errors | striptags }}
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.student_image.label_tag }}
-                                    {{ form.student_image }}
-                                    <div class="text-danger small">
-                                        {{ form.student_image.errors | striptags }}
-                                    </div>
-                                    <img class="img-thumbnail mt-2" id="image-preview" src="{% if student.student_image %}{{ student.student_image.url }}{% else %}#{% endif %}" alt="{{ student.student_image.url }}" style="max-height:200px; margin-bottom:10px; {% if not student.student_image %}display:none;{% endif %}" />
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.student_image.label_tag }}
+                                {{ form.student_image }}
+                                <div class="text-danger small">
+                                    {{ form.student_image.errors | striptags }}
+                                </div>
+                                <img class="img-thumbnail mt-2" id="image-preview" src="{% if student.student_image %}{{ student.student_image.url }}{% else %}#{% endif %}" alt="{{ student.student_image.url }}" style="max-height:200px; margin-bottom:10px; {% if not student.student_image %}display:none;{% endif %}" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="step" id="step-2">
+                    <h3 class="mb-4 text-center fw-bold">Guardian Information</h3>
+                    <div class="row">
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.guardian_address_line_1.label_tag }}
+                                {{ form.guardian_address_line_1 }}
+                                <div class="text-danger small">
+                                    {{ form.guardian_address_line_1.errors | striptags }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.guardian_address_line_2.label_tag }}
+                                {{ form.guardian_address_line_2 }}
+                                <div class="text-danger small">
+                                    {{ form.guardian_address_line_2.errors | striptags }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.guardian_city.label_tag }}
+                                {{ form.guardian_city }}
+                                <div class="text-danger small">
+                                    {{ form.guardian_city.errors | striptags }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.guardian_state.label_tag }}
+                                {{ form.guardian_state }}
+                                <div class="text-danger small">
+                                    {{ form.guardian_state.errors | striptags }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.guardian_country.label_tag }}
+                                {{ form.guardian_country }}
+                                <div class="text-danger small">
+                                    {{ form.guardian_country.errors | striptags }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.guardian_zip.label_tag }}
+                                {{ form.guardian_zip }}
+                                <div class="text-danger small">
+                                    {{ form.guardian_zip.errors | striptags }}
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="step" id="step-2">
-                        <h3 class="mb-4 text-center fw-bold">Guardian Information</h3>
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.guardian_address_line_1.label_tag }}
-                                    {{ form.guardian_address_line_1 }}
-                                    <div class="text-danger small">
-                                        {{ form.guardian_address_line_1.errors | striptags }}
+                </div>
+                <div class="step" id="step-3">
+                    <h3 class="mb-4 text-center fw-bold">Emergency Contact Information</h3>
+                    <div class="row">
+                        <div class="col-12 col-sm-6 col-md-6 first">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group mb-3">
+                                        <h5 class="mb-4">First Information</h5>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.guardian_address_line_2.label_tag }}
-                                    {{ form.guardian_address_line_2 }}
-                                    <div class="text-danger small">
-                                        {{ form.guardian_address_line_2.errors | striptags }}
+                                <div class="col-12">
+                                    <div class="form-group mb-3">
+                                        {{ form.first_emergency_first_name.label_tag }}
+                                        {{ form.first_emergency_first_name }}
+                                        <div class="text-danger small">
+                                            {{ form.first_emergency_first_name.errors | striptags }}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.guardian_city.label_tag }}
-                                    {{ form.guardian_city }}
-                                    <div class="text-danger small">
-                                        {{ form.guardian_city.errors | striptags }}
+                                <div class="col-12">
+                                    <div class="form-group mb-3">
+                                        {{ form.first_emergency_middle_name.label_tag }}
+                                        {{ form.first_emergency_middle_name }}
+                                        <div class="text-danger small">
+                                            {{ form.first_emergency_middle_name.errors | striptags }}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.guardian_state.label_tag }}
-                                    {{ form.guardian_state }}
-                                    <div class="text-danger small">
-                                        {{ form.guardian_state.errors | striptags }}
+                                <div class="col-12">
+                                    <div class="form-group mb-3">
+                                        {{ form.first_emergency_last_name.label_tag }}
+                                        {{ form.first_emergency_last_name }}
+                                        <div class="text-danger small">
+                                            {{ form.first_emergency_last_name.errors | striptags }}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.guardian_country.label_tag }}
-                                    {{ form.guardian_country }}
-                                    <div class="text-danger small">
-                                        {{ form.guardian_country.errors | striptags }}
+                                <div class="col-12">
+                                    <div class="form-group mb-3">
+                                        {{ form.first_emergency_phone_number.label_tag }}
+                                        {{ form.first_emergency_phone_number }}
+                                        <div class="text-danger small">
+                                            {{ form.first_emergency_phone_number.errors | striptags }}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.guardian_zip.label_tag }}
-                                    {{ form.guardian_zip }}
-                                    <div class="text-danger small">
-                                        {{ form.guardian_zip.errors | striptags }}
+                                <div class="col-12">
+                                    <div class="form-group mb-3">
+                                        {{ form.first_emergency_relationship.label_tag }}
+                                        {{ form.first_emergency_relationship }}
+                                        <div class="text-danger small">
+                                            {{ form.first_emergency_relationship.errors | striptags }}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>                        
                         </div>
-                    </div>
-                    <div class="step" id="step-3">
-                        <h3 class="mb-4 text-center fw-bold">Emergency Contact Information</h3>
-                        <div class="row">
-                            <div class="col-6">
+                        <div class="col-12 col-sm-6 col-md-6 second">
+                            <div class="col-12">
                                 <div class="form-group mb-3">
-                                    <h6 class="mb-4">First Information</h6>
+                                    <h5 class="mb-4">Second Information</h5>
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    <h6 class="mb-4">Second Information</h6>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.first_emergency_first_name.label_tag }}
-                                    {{ form.first_emergency_first_name }}
-                                    <div class="text-danger small">
-                                        {{ form.first_emergency_first_name.errors | striptags }}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
+                            <div class="col-12">
                                 <div class="form-group mb-3">
                                     {{ form.second_emergency_first_name.label_tag }}
                                     {{ form.second_emergency_first_name }}
@@ -318,16 +358,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.first_emergency_middle_name.label_tag }}
-                                    {{ form.first_emergency_middle_name }}
-                                    <div class="text-danger small">
-                                        {{ form.first_emergency_middle_name.errors | striptags }}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
+                            <div class="col-12">
                                 <div class="form-group mb-3">
                                     {{ form.second_emergency_middle_name.label_tag }}
                                     {{ form.second_emergency_middle_name }}
@@ -336,16 +367,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.first_emergency_last_name.label_tag }}
-                                    {{ form.first_emergency_last_name }}
-                                    <div class="text-danger small">
-                                        {{ form.first_emergency_last_name.errors | striptags }}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
+                            <div class="col-12">
                                 <div class="form-group mb-3">
                                     {{ form.second_emergency_last_name.label_tag }}
                                     {{ form.second_emergency_last_name }}
@@ -354,16 +376,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.first_emergency_phone_number.label_tag }}
-                                    {{ form.first_emergency_phone_number }}
-                                    <div class="text-danger small">
-                                        {{ form.first_emergency_phone_number.errors | striptags }}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
+                            <div class="col-12">
                                 <div class="form-group mb-3">
                                     {{ form.second_emergency_phone_number.label_tag }}
                                     {{ form.second_emergency_phone_number }}
@@ -372,16 +385,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.first_emergency_relationship.label_tag }}
-                                    {{ form.first_emergency_relationship }}
-                                    <div class="text-danger small">
-                                        {{ form.first_emergency_relationship.errors | striptags }}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
+                            <div class="col-12">
                                 <div class="form-group mb-3">
                                     {{ form.second_emergency_relationship.label_tag }}
                                     {{ form.second_emergency_relationship }}
@@ -389,154 +393,154 @@
                                         {{ form.second_emergency_relationship.errors | striptags }}
                                     </div>
                                 </div>
-                            </div>
+                            </div>                        
                         </div>
                     </div>
-                    <div class="step" id="step-4">
-                        <h3 class="mb-4 text-center fw-bold">Physician Information</h3>
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.physician_first_name.label_tag }}
-                                    {{ form.physician_first_name }}
-                                    <div class="text-danger small">
-                                        {{ form.physician_first_name.errors | striptags }}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.physician_middle_name.label_tag }}
-                                    {{ form.physician_middle_name }}
-                                    <div class="text-danger small">
-                                        {{ form.physician_middle_name.errors | striptags }}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.physician_last_name.label_tag }}
-                                    {{ form.physician_last_name }}
-                                    <div class="text-danger small">
-                                        {{ form.physician_last_name.errors | striptags }}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.physician_primary_phone_number.label_tag }}
-                                    {{ form.physician_primary_phone_number }}
-                                    <div class="text-danger small">
-                                        {{ form.physician_primary_phone_number.errors | striptags }}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.physician_secondary_phone_number.label_tag }}
-                                    {{ form.physician_secondary_phone_number }}
-                                    <div class="text-danger small">
-                                        {{ form.physician_secondary_phone_number.errors | striptags }}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.preferred_hospital_name.label_tag }}
-                                    {{ form.preferred_hospital_name }}
-                                    <div class="text-danger small">
-                                        {{ form.preferred_hospital_name.errors | striptags }}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-group mb-3">
-                                    {{ form.physician_special_notes.label_tag }}
-                                    {{ form.physician_special_notes }}
-                                    <div class="text-danger small">
-                                        {{ form.physician_special_notes.errors | striptags }}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="step" id="step-5">
-                        <h3 class="mb-4 text-center fw-bold">Previous School Information</h3>
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.previous_school_name.label_tag }}
-                                    {{ form.previous_school_name }}
-                                    <div class="text-danger small">
-                                        {{ form.previous_school_name.errors | striptags }}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.previous_school_city.label_tag }}
-                                    {{ form.previous_school_city }}
-                                    <div class="text-danger small">
-                                        {{ form.previous_school_city.errors | striptags }}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.previous_school_state.label_tag }}
-                                    {{ form.previous_school_state }}
-                                    <div class="text-danger small">
-                                        {{ form.previous_school_state.errors | striptags }}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.previous_school_country.label_tag }}
-                                    {{ form.previous_school_country }}
-                                    <div class="text-danger small">
-                                        {{ form.previous_school_country.errors | striptags }}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.previous_school_date_started.label_tag }}
-                                    {{ form.previous_school_date_started }}
-                                    <div class="text-danger small">
-                                        {{ form.previous_school_date_started.errors | striptags }}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
-                                    {{ form.previous_school_date_ended.label_tag }}
-                                    {{ form.previous_school_date_ended }}
-                                    <div class="text-danger small">
-                                        {{ form.previous_school_date_ended.errors | striptags }}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-group mb-3">
-                                    {{ form.previous_school_notes.label_tag }}
-                                    {{ form.previous_school_notes }}
-                                    <div class="text-danger small">
-                                        {{ form.previous_school_notes.errors | striptags }}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                </div>
+                <div class="step" id="step-4">
+                    <h3 class="mb-4 text-center fw-bold">Physician Information</h3>
                     <div class="row">
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.physician_first_name.label_tag }}
+                                {{ form.physician_first_name }}
+                                <div class="text-danger small">
+                                    {{ form.physician_first_name.errors | striptags }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.physician_middle_name.label_tag }}
+                                {{ form.physician_middle_name }}
+                                <div class="text-danger small">
+                                    {{ form.physician_middle_name.errors | striptags }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.physician_last_name.label_tag }}
+                                {{ form.physician_last_name }}
+                                <div class="text-danger small">
+                                    {{ form.physician_last_name.errors | striptags }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.physician_primary_phone_number.label_tag }}
+                                {{ form.physician_primary_phone_number }}
+                                <div class="text-danger small">
+                                    {{ form.physician_primary_phone_number.errors | striptags }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.physician_secondary_phone_number.label_tag }}
+                                {{ form.physician_secondary_phone_number }}
+                                <div class="text-danger small">
+                                    {{ form.physician_secondary_phone_number.errors | striptags }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.preferred_hospital_name.label_tag }}
+                                {{ form.preferred_hospital_name }}
+                                <div class="text-danger small">
+                                    {{ form.preferred_hospital_name.errors | striptags }}
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-12">
-                            <button type="button" id="previous-button" class="btn btn-outline-warning float-start">Previous</button>
-                            <button type="button" id="next-button" class="btn btn-outline-primary float-end">Next</button>
-                            <button type="submit" id="submit-button" class="btn btn-outline-primary float-end">Submit</button>
+                            <div class="form-group mb-3">
+                                {{ form.physician_special_notes.label_tag }}
+                                {{ form.physician_special_notes }}
+                                <div class="text-danger small">
+                                    {{ form.physician_special_notes.errors | striptags }}
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </form>
-            </div>
+                </div>
+                <div class="step" id="step-5">
+                    <h3 class="mb-4 text-center fw-bold">Previous School Information</h3>
+                    <div class="row">
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.previous_school_name.label_tag }}
+                                {{ form.previous_school_name }}
+                                <div class="text-danger small">
+                                    {{ form.previous_school_name.errors | striptags }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.previous_school_city.label_tag }}
+                                {{ form.previous_school_city }}
+                                <div class="text-danger small">
+                                    {{ form.previous_school_city.errors | striptags }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.previous_school_state.label_tag }}
+                                {{ form.previous_school_state }}
+                                <div class="text-danger small">
+                                    {{ form.previous_school_state.errors | striptags }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.previous_school_country.label_tag }}
+                                {{ form.previous_school_country }}
+                                <div class="text-danger small">
+                                    {{ form.previous_school_country.errors | striptags }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.previous_school_date_started.label_tag }}
+                                {{ form.previous_school_date_started }}
+                                <div class="text-danger small">
+                                    {{ form.previous_school_date_started.errors | striptags }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.previous_school_date_ended.label_tag }}
+                                {{ form.previous_school_date_ended }}
+                                <div class="text-danger small">
+                                    {{ form.previous_school_date_ended.errors | striptags }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group mb-3">
+                                {{ form.previous_school_notes.label_tag }}
+                                {{ form.previous_school_notes }}
+                                <div class="text-danger small">
+                                    {{ form.previous_school_notes.errors | striptags }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <button type="button" id="previous-button" class="btn btn-outline-warning float-start">Previous</button>
+                        <button type="button" id="next-button" class="btn btn-outline-primary float-end">Next</button>
+                        <button type="submit" id="submit-button" class="btn btn-outline-primary float-end">Submit</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 {% endblock content %}

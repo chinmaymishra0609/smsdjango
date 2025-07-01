@@ -10,159 +10,155 @@
 {% endblock breadcrumb %}
 
 {% block content %}
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    <form action="" method="POST" novalidate>
-                        {% csrf_token %}
-                        <h3 class="mb-4 text-center fw-bold">{{ title }}</h3>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group mb-3">
-                                    {{ form.first_name.label_tag }}
-                                    {{ form.first_name }}
-                                    <div class="text-danger small">
-                                        {{ form.first_name.errors | striptags }}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group mb-3">
-                                    {{ form.last_name.label_tag }}
-                                    {{ form.last_name }}
-                                    <div class="text-danger small">
-                                        {{ form.last_name.errors | striptags }}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group mb-3">
-                                    {{ form.username.label_tag }}
-                                    {{ form.username }}
-                                    <div class="text-danger small">
-                                        {{ form.username.errors | striptags }}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group mb-3">
-                                    {{ form.email.label_tag }}
-                                    {{ form.email }}
-                                    <div class="text-danger small">
-                                        {{ form.email.errors | striptags }}
-                                    </div>
-                                </div>
-                            </div>
-                            {% if "groups" in form.fields %}
-                                <div class="col-md-6">
-                                    <div class="form-group mb-3">
-                                        {{ form.groups.label_tag }}
-                                        {{ form.groups }}
-                                        <div class="text-danger small">
-                                            {{ form.groups.errors | striptags }}
-                                        </div>
-                                    </div>
-                                </div>
-                            {%endif %}
-                            {% if "user_permissions" in form.fields %}
-                                <div class="col-md-6">
-                                    <div class="form-group mb-3">
-                                        {{ form.user_permissions.label_tag }}
-                                        {{ form.user_permissions }}
-                                        <div class="text-danger small">
-                                            {{ form.user_permissions.errors | striptags }}
-                                        </div>
-                                    </div>
-                                </div>
-                            {%endif %}
-                            {% if "is_superuser" in form.fields %}
-                                <div class="col-md-6">
-                                    <div class="form-group mb-3">
-                                        {{ form.is_superuser.label_tag }}
-                                        {{ form.is_superuser }}
-                                        <div class="text-danger small">
-                                            {{ form.is_superuser.errors | striptags }}
-                                        </div>
-                                    </div>
-                                </div>
-                            {%endif %}
-                            {% if "is_staff" in form.fields %}
-                                <div class="col-md-6">
-                                    <div class="form-group mb-3">
-                                        {{ form.is_staff.label_tag }}
-                                        {{ form.is_staff }}
-                                        <div class="text-danger small">
-                                            {{ form.is_staff.errors | striptags }}
-                                        </div>
-                                    </div>
-                                </div>
-                            {%endif %}
-                            {% if "is_active" in form.fields %}
-                                <div class="col-md-6">
-                                    <div class="form-group mb-3">
-                                        {{ form.is_active.label_tag }}
-                                        {{ form.is_active }}
-                                        <div class="text-danger small">
-                                            {{ form.is_active.errors | striptags }}
-                                        </div>
-                                    </div>
-                                </div>
-                            {%endif %}
-                            {% if "password1" in form.fields %}
-                                <div class="col-md-6">
-                                    <div class="form-group mb-3">
-                                        {{ form.password1.label_tag }}
-                                        {{ form.password1 }}
-                                        <div class="text-danger small">
-                                            {{ form.password1.errors | striptags }}
-                                        </div>
-                                    </div>
-                                </div>
-                            {% endif %}
-                            {% if "password2" in form.fields %}
-                                <div class="col-md-6">
-                                    <div class="form-group mb-3">
-                                        {{ form.password2.label_tag }}
-                                        {{ form.password2 }}
-                                        <div class="text-danger small">
-                                            {{ form.password2.errors | striptags }}
-                                        </div>
-                                    </div>
-                                </div>
-                            {% endif %}
-                            {% if form.date_joined %}
-                                <div class="col-md-6">
-                                    <div class="form-group mb-3">
-                                        {{ form.date_joined.label_tag }}
-                                        {{ form.date_joined }}
-                                        <div class="text-danger small">
-                                            {{ form.date_joined.errors | striptags }}
-                                        </div>
-                                    </div>
-                                </div>
-                            {% endif %}
-                            {% if form.last_login %}
-                                <div class="col-md-6">
-                                    <div class="form-group mb-3">
-                                        {{ form.last_login.label_tag }}
-                                        {{ form.last_login }}
-                                        <div class="text-danger small">
-                                            {{ form.last_login.errors | striptags }}
-                                        </div>
-                                    </div>
-                                </div>
-                            {% endif %}
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <a type="button" id="signup-button" class="btn btn-outline-warning float-start" href="{% url 'add-student' %}">Cancel</a>
-                                <button type="submit" id="login-button" class="btn btn-outline-primary float-end">Submit</button>
+    <div class="card">
+        <div class="card-body">
+            <form action="" method="POST" novalidate>
+                {% csrf_token %}
+                <h3 class="mb-4 text-center fw-bold">{{ title }}</h3>
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.first_name.label_tag }}
+                            {{ form.first_name }}
+                            <div class="text-danger small">
+                                {{ form.first_name.errors | striptags }}
                             </div>
                         </div>
-                    </form>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.last_name.label_tag }}
+                            {{ form.last_name }}
+                            <div class="text-danger small">
+                                {{ form.last_name.errors | striptags }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.username.label_tag }}
+                            {{ form.username }}
+                            <div class="text-danger small">
+                                {{ form.username.errors | striptags }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.email.label_tag }}
+                            {{ form.email }}
+                            <div class="text-danger small">
+                                {{ form.email.errors | striptags }}
+                            </div>
+                        </div>
+                    </div>
+                    {% if "groups" in form.fields %}
+                        <div class="col-12 col-sm-12 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.groups.label_tag }}
+                                {{ form.groups }}
+                                <div class="text-danger small">
+                                    {{ form.groups.errors | striptags }}
+                                </div>
+                            </div>
+                        </div>
+                    {%endif %}
+                    {% if "user_permissions" in form.fields %}
+                        <div class="col-12 col-sm-12 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.user_permissions.label_tag }}
+                                {{ form.user_permissions }}
+                                <div class="text-danger small">
+                                    {{ form.user_permissions.errors | striptags }}
+                                </div>
+                            </div>
+                        </div>
+                    {%endif %}
+                    {% if form.date_joined %}
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.date_joined.label_tag }}
+                                {{ form.date_joined }}
+                                <div class="text-danger small">
+                                    {{ form.date_joined.errors | striptags }}
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% if form.last_login %}
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.last_login.label_tag }}
+                                {{ form.last_login }}
+                                <div class="text-danger small">
+                                    {{ form.last_login.errors | striptags }}
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% if "is_superuser" in form.fields %}
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.is_superuser.label_tag }}
+                                {{ form.is_superuser }}
+                                <div class="text-danger small">
+                                    {{ form.is_superuser.errors | striptags }}
+                                </div>
+                            </div>
+                        </div>
+                    {%endif %}
+                    {% if "is_staff" in form.fields %}
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.is_staff.label_tag }}
+                                {{ form.is_staff }}
+                                <div class="text-danger small">
+                                    {{ form.is_staff.errors | striptags }}
+                                </div>
+                            </div>
+                        </div>
+                    {%endif %}
+                    {% if "is_active" in form.fields %}
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.is_active.label_tag }}
+                                {{ form.is_active }}
+                                <div class="text-danger small">
+                                    {{ form.is_active.errors | striptags }}
+                                </div>
+                            </div>
+                        </div>
+                    {%endif %}
+                    {% if "password1" in form.fields %}
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.password1.label_tag }}
+                                {{ form.password1 }}
+                                <div class="text-danger small">
+                                    {{ form.password1.errors | striptags }}
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% if "password2" in form.fields %}
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="form-group mb-3">
+                                {{ form.password2.label_tag }}
+                                {{ form.password2 }}
+                                <div class="text-danger small">
+                                    {{ form.password2.errors | striptags }}
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
                 </div>
-            </div>
+                <div class="row">
+                    <div class="col-12">
+                        <a type="button" id="signup-button" class="btn btn-outline-warning float-start" href="{% url 'add-student' %}">Cancel</a>
+                        <button type="submit" id="login-button" class="btn btn-outline-primary float-end">Submit</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 {% endblock content %}

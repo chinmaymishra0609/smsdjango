@@ -333,48 +333,26 @@ class StudentDeleteView(LoginRequiredMixin, View):
 
     def get(self, request, *args, **kwargs):
         """
-        Handles GET request to show delete confirmation page.
+        Handles GET request to show perform the deletion.
 
         - Checks delete permission.
         - Retrieves the student instance by primary key (`pk`).
-        - Renders confirmation template if student exists.
+        - Deletes the student instance.
+        - Displays a success or error message based on result.
         - Redirects with an error if student does not exist.
         """
+
         try:
             # Check if the user has permission to delete students.
             if not request.user.has_perm("student.delete_student"):
                 messages.error(request=request, message="You do not have permission to access this page.")
                 return redirect("dashboard")
 
-            # Set page title for the confirmation dialog.
-            self.context["title"] = "Delete Student Confirmation"
-
             # Retrieve the student to be deleted using the primary key from URL.
-            self.context["student"] = Student.objects.get(pk=kwargs.get("pk"))
-
-            # Render the delete confirmation page with student info.
-            return render(request, "student/delete-student-confirmation.html", self.context)
-
-        # If the student doesn't exist, handle it gracefully.
-        except Student.DoesNotExist:
-            messages.error(request=request, message="The record does not exist or has already been deleted.")
-            return redirect("all-students")
-
-    def post(self, request, *args, **kwargs):
-        """
-        Handles POST request to perform the deletion.
-
-        - Retrieves the student by primary key (`pk`).
-        - Deletes the student instance.
-        - Displays a success or error message based on result.
-        - If student does not exist, handles gracefully.
-        """
-        try:
-            # Retrieve the student record to delete.
-            self.context["student"] = Student.objects.get(pk=kwargs.get("pk"))
+            student = Student.objects.get(pk=kwargs.get("pk"))
 
             # Perform the deletion. `.delete()` returns a tuple (number of deleted objects, details).
-            deleted_count, deleted_object = self.context["student"].delete()
+            deleted_count, deleted_object = student.delete()
 
             # If deletion was successful, show a success message.
             if deleted_count > 0:
@@ -383,7 +361,7 @@ class StudentDeleteView(LoginRequiredMixin, View):
                 # Rare case: delete didn't work even though object was found.
                 messages.error(request=request, message="The record has not been deleted. Try again.")
 
-        # If the student record does not exist, show appropriate error.
+        # If the student doesn't exist, handle it gracefully.
         except Student.DoesNotExist:
             messages.error(request=request, message="The record does not exist or has already been deleted.")
 

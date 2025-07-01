@@ -1,25 +1,49 @@
-{% load static %}
+{# Load the static files tag library so that we can use {% static %} for paths #}
+{% load static %} 
+
+{# Begin JavaScript block #}
 <script type="text/javascript">
+    // Check if there are any Django messages to display.
     {% if messages %}
+        // Loop through each message in the messages context.
         {% for message in messages %}
+            // Set the title of the notification using the "module" variable from Django context.
             var notificationTitle = "{{ module }}";
+
+            // Set the main message content (text to display in notification).
             var notificationText = "{{ message }}";
+
+            // Get the message tag (e.g., success, info, warning, error) if it exists.
             var notificationType = "{% if message.tags %}{{ message.tags }}{% endif %}";
+
+            // Initialize an empty variable to store the icon path based on message type.
             var notificationIcon = "";
 
+            // Check the type of message and assign appropriate icon path.
             if(notificationType == "success"){
+                // If the message is of type "success", use green tick icon.
                 notificationIcon = "{% static 'core/assets/images/notification/ok-48.png' %}";
-            }else if(notificationType == "info"){
+            }else if (notificationType == "info"){
+                // If the message is informational, use an info/survey icon.
                 notificationIcon = "{% static 'core/assets/images/notification/survey-48.png' %}";
-            }else if(notificationType == "warning"){
+            }else if (notificationType == "warning"){
+                // If the message is a warning, use a medium priority icon.
                 notificationIcon = "{% static 'core/assets/images/notification/medium_priority-48.png' %}";
-            }else if(notificationType == "error"){
-                notificationIcon = "{% static 'core/assets/images/notification/high_priority-48.png' %}";                
-            }else{
+            }else if (notificationType == "error"){
+                // If the message is an error, use a high priority icon.
+                notificationIcon = "{% static 'core/assets/images/notification/high_priority-48.png' %}";
+            }else {
+                // Default case: use a clock icon for unknown message types.
                 notificationIcon = "{% static 'core/assets/images/notification/clock-48.png' %}";
             }
 
+            // Call a custom notifier function to display the notification.
+            // Parameters: title, message, type, icon URL, duration (in milliseconds).
             notifier.show(notificationTitle, notificationText, notificationType, notificationIcon, 5000);
+
+            // End of loop through messages.
         {% endfor %}
+    // End of check for messages.
     {% endif %}
+// End JavaScript block.
 </script>

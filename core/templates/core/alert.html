@@ -1,0 +1,59 @@
+<script type="text/javascript">
+    // Attach a delegated event handler to the document for any element with class `.delete-student`.
+    // This ensures the handler works for dynamically added elements too.
+    jQuery(document).on("click", ".delete-student", function(e){
+        // Prevent the default action of the anchor tag (which would normally navigate to the `href`).
+        e.preventDefault();
+
+        // Get the value of the `href` attribute from the clicked element (i.e., the delete URL).
+        var url = jQuery(this).attr("href");
+
+        // Create a SweetAlert2 instance with custom Bootstrap-styled buttons.
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                // Style the confirm (Yes) button with Bootstrap outline-primary and some margin.
+                confirmButton: "btn btn-outline-primary ms-2",
+
+                // Style the cancel (No) button with Bootstrap outline-danger.
+                cancelButton: "btn btn-outline-danger"
+            },
+            // Disable SweetAlert2's default styling for buttons to use custom Bootstrap classes.
+            buttonsStyling: false
+        });
+
+        // Display the confirmation dialog using SweetAlert2.
+        swalWithBootstrapButtons.fire({
+            // Title of the confirmation dialog.
+            title: "Are you sure?",
+
+            // Text body of the dialog.
+            text: "You will not be able to revert this!",
+
+            // Warning icon to indicate danger.
+            icon: "warning",
+
+            // Show the cancel button along with the confirm button.
+            showCancelButton: true,
+
+            // Label text for the confirm (Yes) button.
+            confirmButtonText: "Yes, delete it!",
+
+            // Label text for the cancel (No) button.
+            cancelButtonText: "No, cancel!",
+
+            // Reverse the button positions (Cancel on left, Confirm on right).
+            reverseButtons: true
+        }).then((result) => {
+            // If user confirms the action.
+            if (result.isConfirmed) {
+                // Redirect to the delete URL (actual deletion is handled server-side).
+                window.location.href = url;
+            }
+            // If user cancels the action.
+            else if (result.dismiss === Swal.DismissReason.cancel) {
+                // Show a cancelled alert with a custom message and error icon.
+                swalWithBootstrapButtons.fire("Cancelled", "The record has not been deleted.", "error");
+            }
+        });
+    });
+</script>
