@@ -19,3 +19,8 @@
     height: 3rem;
     border-radius: 50%;
 }
+
+.scaled-logo-text {
+  transform: scaleX(1) scaleY(3); /* Horizontal squish, vertical stretch */
+  display: inline-block;
+}
