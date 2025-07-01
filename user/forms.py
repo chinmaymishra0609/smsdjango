@@ -346,15 +346,14 @@ class CustomPasswordResetForm(PasswordResetForm):
 class CustomUserLoginForm(AuthenticationForm):
     # Override the username field to customize the widget.
     username = forms.CharField(
-        label="Username",
-        widget=forms.TextInput(attrs={"class": "form-control"
-        })
+        label="Username (admin)",
+        widget=forms.TextInput(attrs={"class": "form-control", "value": "admin"})
     )
 
     # Override the password field to use a password input widget with styling.
     password = forms.CharField(
-        label="Password",
-        widget=forms.PasswordInput(attrs={"class": "form-control"})
+        label="Password (password)",
+        widget=forms.PasswordInput(attrs={"class": "form-control", "value": "password"})
     )
 
 # Create custom user set password form here.
