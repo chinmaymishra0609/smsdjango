@@ -1,3 +1,5 @@
+from django.shortcuts import render
+
 # Import Django's base class-based view (CBV) which provides structure for GET, POST, etc.
 from django.views import View
 
@@ -101,4 +103,53 @@ class CustomSendMail(View):
             auth_password=auth_password,
             connection=connection,
             html_message=html_message,
+        )
+
+# Create custom 404 view here
+class Custom404View(View):
+    """
+    Custom404View is a class-based view that handles HTTP 404 (Page Not Found) errors.
+
+    This view is designed to render a user-friendly custom 404 error page whenever
+    a non-existent URL is accessed in the application.
+
+    Attributes:
+        context (dict): A dictionary used to store context data passed to the template.
+
+    Methods:
+        get(request, exception=None, *args, **kwargs):
+            Handles GET requests for 404 errors and renders a custom 404 template
+            with a relevant status code and context.
+    """
+
+    # Define a context dictionary to store template context variables.
+    context = {}
+
+    def get(self, request, exception=None, *args, **kwargs):
+        """
+        Handles GET requests triggered by 404 errors.
+
+        This method is automatically called when a 404 error occurs and the
+        handler404 is set to this view. It sets the appropriate context,
+        renders the 404.html template, and returns an HTTP 404 response.
+
+        Args:
+            request (HttpRequest): The HTTP request object.
+            exception (Exception, optional): The exception that caused the 404 error.
+            *args: Variable length argument list.
+            **kwargs: Arbitrary keyword arguments.
+
+        Returns:
+            HttpResponse: A rendered 404 error page with status code 404.
+        """
+
+        # Set a title for the 404 error page.
+        self.context["title"] = "Page Not Found"
+
+        # Render the 404 error template with the provided context and return a 404 response.
+        return render(
+            request=request,              # The current HTTP request.
+            template_name="404.html",     # Path to the custom 404 template.
+            context=self.context,         # Context passed to the template.
+            status=404                    # HTTP status code for 'Not Found'.
         )

@@ -1,32 +1,23 @@
-{% extends "core/base.html" %}
+{% extends "core/authbase.html" %}
+{% load static %}
 
 {% block title %}
     {{ title }}
 {% endblock title %}
 
-{% block sidebar %}{% endblock sidebar %}
-{% block nvabar %}{% endblock nvabar %}
-
-{% block breadcrumb %}
-    {% include "core/breadcrumb.html" with breadcrumb=title %}
-{% endblock breadcrumb %}
-
 {% block content %}
-    <div class="row">
-        <div class="col-md-12">
-            {% include "core/no-data-found.html" %}
+    <div class="">
+        <div class="d-flex justify-content-center align-items-center">
+            <img class="img-fluid" src="{% static 'core/assets/images/pages/Error404.png' %}" alt="Error404.png">
+        </div>
+        <div class="text-center">
+            <a type="button" class="btn btn-outline-primary" href="{% url 'login' %}">Go Back</a>
         </div>
     </div>
 {% endblock content %}
 
-{% comment %} <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>No Data Found</title>
-</head>
-<body>
-    <h1>No Data Found</h1>
-</body>
-</html> {% endcomment %}
+{% block footer %}{% endblock footer %}
+
+{% block notification %}
+    {% include "core/notification.html" with module="Auth" %}
+{% endblock notification %}
