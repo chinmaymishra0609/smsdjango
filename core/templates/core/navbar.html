@@ -23,30 +23,37 @@
         <div class="ms-auto">
             <ul class="list-unstyled">
                 <li class="dropdown pc-h-item header-user-profile">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-outline-primary">{{ request.user.first_name | lower | capfirst }} {{ request.user.last_name | lower | capfirst }}</button>
+                        <button type="button" class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr-only">Toggle Dropdown</span></button>
+                        <div class="dropdown-menu">
+                            {% if perms.auth.change_user %}
+                                <a href="{% url 'update-profile' request.user.id %}" class="dropdown-item">
+                                    <i class="ti ti-edit-circle"></i>
+                                    <span>Update Profile</span>
+                                </a>
+                            {% endif %}
+                            <a href="{% url 'change-password' %}" class="dropdown-item">
+                                <i class="ti ti-key"></i>
+                                <span>Change Password</span>
+                            </a>
+                            <a href="{% url 'set-password' %}" class="dropdown-item">
+                                <i class="ti ti-key"></i>
+                                <span>Set Password</span>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="{% url 'logout' %}" class="dropdown-item">
+                                <i class="ti ti-power"></i>
+                                <span>Logout</span>
+                            </a>
+                        </div>
+                    </div>
                     <a class="pc-head-link dropdown-toggle arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" data-bs-auto-close="outside" aria-expanded="false">
-                        <span>{{ request.user.first_name | lower | capfirst }} {{ request.user.last_name | lower | capfirst }}</span>
+                        <span></span>
                     </a>
                     <div class="dropdown-menu dropdown-user-profile dropdown-menu-end pc-h-dropdown">
                         <div class="tab-content" id="mysrpTabContent">
                             <div class="tab-pane fade show active" id="drp-tab-1" role="tabpanel" aria-labelledby="drp-t1" tabindex="0">
-                                {% if perms.auth.change_user %}
-                                    <a href="{% url 'update-profile' request.user.id %}" class="dropdown-item">
-                                        <i class="ti ti-edit-circle"></i>
-                                        <span>Update Profile</span>
-                                    </a>
-                                {% endif %}
-                                <a href="{% url 'change-password' %}" class="dropdown-item">
-                                    <i class="ti ti-key"></i>
-                                    <span>Change Password</span>
-                                </a>
-                                <a href="{% url 'set-password' %}" class="dropdown-item">
-                                    <i class="ti ti-key"></i>
-                                    <span>Set Password</span>
-                                </a>
-                                <a href="{% url 'logout' %}" class="dropdown-item">
-                                    <i class="ti ti-logout"></i>
-                                    <span>Logout</span>
-                                </a>
                             </div>
                         </div>
                     </div>
