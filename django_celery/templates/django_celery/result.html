@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Task Result</title>
+    </head>
+	<body>
+        <h1>Task Result</h1><hr/>
+        {% if result.id %}
+            {{"----------------------------------"}}
+            <p>ID: <b>{{ result.id }}</b></p>
+            <p>Task ID: <b>{{ result.task_id }}</b></p>
+            <p>State: <b>{{ result.state }}</b></p>
+            <p>Status: <b>{{ result.status }}</b></p>
+            <p>Result: <b>{{ result.result }}</b></p>
+            <p>Date Done: <b>{{ result.date_done }}</b></p>
+            <p>Traceback: <b>{{ result.traceback }}</b></p>
+            <p>Children: <b>{{ result.children }}</b></p>
+            <p>Worker: <b>{{ result.worker }}</b></p>
+            <p>Args: <b>{{ result.args }}</b></p>
+            <p>Kwargs: <b>{{ result.kwargs }}</b></p>
+            <p>Name: <b>{{ result.name }}</b></p>
+            <p>Meta: <b>{{ result.meta }}</b></p>
+            <p>Result Type: <b>{{ result.result_type }}</b></p>
+            <p>Successful: <b>{{ result.successful }}</b></p>
+            <p>Failed: <b>{{ result.failed }}</b></p>
+            {{"----------------------------------"}}
+        {% endif %}
+	</body>
+</html>

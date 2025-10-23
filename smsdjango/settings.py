@@ -1,5 +1,6 @@
 from pathlib import Path
 from decouple import config, UndefinedValueError
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / "subdir".
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,6 +25,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "channels",
+    "django_celery_beat",
+    "django_celery_results",
+    "django_channels",
+    "django_celery",
     "core",
     "student",
     "user",
@@ -58,6 +64,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "smsdjango.wsgi.application"
+ASGI_APPLICATION = "smsdjango.asgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
@@ -82,12 +89,18 @@ else:
             "USER": config("DB_USER"),
             "PASSWORD": config("DB_PASSWORD"),
             "HOST": config("DB_HOST", "localhost"),
-            "PORT": config("DB_PORT", "3306"),
-            "OPTIONS": {
-                "charset": config("DB_CHARSET", "utf8mb4")
-            },
+            "PORT": config("DB_PORT", "5432"),
         }
     }
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("127.0.0.1", 6379)],
+        },
+    },
+}
 
 # Email settings
 EMAIL_BACKEND       = config("EMAIL_BACKEND")
@@ -97,6 +110,23 @@ EMAIL_USE_TLS       = config("EMAIL_USE_TLS")
 EMAIL_HOST_USER     = config("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
 DEFAULT_FROM_EMAIL  = config("DEFAULT_FROM_EMAIL")
+
+# Redis settings
+CELERY_BROKER_URL = "redis://localhost:6379/0"
+# CELERY_RESULT_BACKEND = "redis://localhost:6379/0"
+CELERY_RESULT_BACKEND = "django-db"
+CELERY_ACCEPT_CONTENT = ["json"]
+CELERY_TASK_SERIALIZER = "json"
+CELERY_RESULT_SERIALIZER = "json"
+CELERY_TIMEZONE = "Asia/Kolkata"
+CELERY_RESULT_EXTENDED = True
+CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
+CELERY_BEAT_SCHEDULE = {
+    "clear-session-cache-in-every-10-seconds": {
+        "task": "ClearSessionCacheTask",
+        "schedule": timedelta(seconds=10),
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -121,11 +151,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Asia/Kolkata"
 
 USE_I18N = True
 
-USE_TZ = False
+USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/

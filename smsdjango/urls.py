@@ -44,6 +44,12 @@ urlpatterns = [
 
     # Include URL patterns defined in the student app.
     path("student/", include("student.urls")),
+
+    # Include URL patterns defined in the django_channels app.
+    path("django-channels/", include("django_channels.urls")),
+
+    # Include URL patterns defined in the django_celery app.
+    path("django-celery/", include("django_celery.urls")),
 ]
 
 # Check if the Django project is running in DEBUG mode (i.e., development mode).
