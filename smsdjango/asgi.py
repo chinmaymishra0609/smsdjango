@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/5.1/howto/deployment/asgi/
 import os, django
 from django.core.asgi import get_asgi_application
 from channels.routing import ProtocolTypeRouter, URLRouter
+from django.contrib.staticfiles.handlers import ASGIStaticFilesHandler
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'smsdjango.settings')
 django.setup()
@@ -19,7 +20,7 @@ from channels.auth import AuthMiddlewareStack
 
 # application = get_asgi_application()
 application = ProtocolTypeRouter({
-    "http": get_asgi_application(),
+    "http": ASGIStaticFilesHandler(get_asgi_application()),
     "websocket": AuthMiddlewareStack(
         URLRouter(routing.urlpatterns)
     ),
